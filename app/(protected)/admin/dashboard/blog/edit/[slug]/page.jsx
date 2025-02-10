@@ -1,5 +1,5 @@
 import getBlogPost from "@/app/_actions/getBlogPost";
-import Editor from "./_components/Editor";
+import dynamic from "next/dynamic";
 
 export const generateMetadata = async ({ params, searchParams }) => {
     const { slug } = params;
@@ -10,6 +10,8 @@ export const generateMetadata = async ({ params, searchParams }) => {
         title: `Editing: ${data?.title}`
     };
 };
+
+const Editor = dynamic(() => import("./_components/Editor"), { ssr: false });
 
 export default async function EditBlogPost({ params, searchParams }) {
     const { slug } = params;

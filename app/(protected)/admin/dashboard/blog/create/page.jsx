@@ -1,8 +1,11 @@
 import Editor from "./_components/Editor";
+import dynamic from "next/dynamic";
 
 export const metadata = {
     title: "Create New Blog Post"
 };
+
+const Editor = dynamic(() => import("./_components/Editor"), { ssr: false });
 
 export default function CreateBlogPost() {
     return (
