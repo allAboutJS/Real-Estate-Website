@@ -1,4 +1,3 @@
-import Editor from "./_components/Editor";
 import dynamic from "next/dynamic";
 
 export const metadata = {
