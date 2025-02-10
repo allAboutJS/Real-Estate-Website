@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
             <h2 className="text-center text-3xl">Why Choose Us?</h2>
             <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-1 max-w-screen-lg mx-auto">
                 {whyChooseUs.map((reason) => (
-                    <li className="bg-zinc-50 p-4 border hover:shadow-lg">
+                    <li key={reason.offer} className="bg-zinc-50 p-4 border hover:shadow-lg">
                         {reason.icon}
                         <div className="clear-both"></div>
                         <h3 className="z-20 text-xl mb-2">{reason.offer}</h3>

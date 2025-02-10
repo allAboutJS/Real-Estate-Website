@@ -24,7 +24,7 @@ export default function Tabs({ data }) {
             <div className="bg-white/60 p-4 shadow-sm">
                 {activeTab.component || (
                     <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
-                        There's nothing here.
+                        There&apos;s nothing here.
                     </div>
                 )}
             </div>

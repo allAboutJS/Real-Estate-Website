@@ -15,15 +15,16 @@ export default function LetsWorkTogether() {
             />
             <div>
                 <h2 className="text-3xl relative w-fit after:absolute after:h-2 after:w-1/2 after:bottom-1 after:bg-orange-400 after:right-0 after:-z-10">
-                    Let's Work Together
+                    Let&apos;s Work Together
                 </h2>
                 <p className="text-zinc-600">
-                    Whether you’re a first-time home buyer, a seasoned investor, or a business looking to expand, we’re
-                    here to guide you every step of the way. Explore our listings, consult with our expert team, and
-                    discover the difference <b>Ebube Agu Properties Ltd.</b> can make in your real estate journey.
+                    Whether you&apos;re a first-time home buyer, a seasoned investor, or a business looking to expand,
+                    we&apos;re here to guide you every step of the way. Explore our listings, consult with our expert
+                    team, and discover the difference <b>Ebube Agu Properties Ltd.</b> can make in your real estate
+                    journey.
                 </p>
                 <p>
-                    <b>Your dream property is just a call away. Let’s make it happen together.</b>
+                    <b>Your dream property is just a call away. Let&apos;s make it happen together.</b>
                 </p>
             </div>
         </section>

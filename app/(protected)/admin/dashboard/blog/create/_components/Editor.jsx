@@ -69,7 +69,7 @@ export default function Editor() {
             publishButtonRef.current?.removeEventListener("click", publishBlogPost);
             draftButtonRef.current?.removeEventListener("click", saveBlogAsDraft);
         };
-    }, [publishButtonRef.current, draftButtonRef.current, quillEditorRef]);
+    }, [router, quillEditorRef]);
 
     return (
         <>

@@ -79,23 +79,21 @@ export default function Select(props) {
 
         dispatch({ type: "set_filtered_options", payload: filteredOptions });
         getValue && getValue(state.value);
-    }, [state.value, state.labelValue, options]);
+    }, [state, options, getValue]);
 
     useEffect(() => {
         if (suggestionList.current) {
             const activeSuggestion = suggestionList.current.children[state.activeOptionIndex];
             if (activeSuggestion) activeSuggestion?.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
-    }, [suggestionList.current, state.activeOptionIndex]);
+    }, [state.activeOptionIndex]);
 
     return (
         <div className="relative">
             <button
-                aria-autocomplete="list"
                 aria-controls={id}
                 aria-expanded={state.showAutocomplete}
                 aria-haspopup="listbox"
-                aria-activedescendant={state.showAutocomplete ? `option-${state.activeOptionIndex}` : undefined}
                 onFocus={() => dispatch({ type: "set_autocomplete_visibility", payload: true })}
                 onBlur={() =>
                     setTimeout(
@@ -106,7 +104,6 @@ export default function Select(props) {
                         300
                     )
                 }
-                role="textbox"
                 type="text"
                 value={state.labelValue}
                 onKeyDown={handleKeydown}

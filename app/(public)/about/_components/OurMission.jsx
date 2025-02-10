@@ -8,6 +8,7 @@ export default function OurMission() {
                 width={350}
                 src="/images/people-business-meeting.jpg"
                 className="w-full h-full object-cover"
+                alt="People in a business meeting"
             />
             <div>
                 <h2 className="text-3xl relative w-fit after:absolute after:h-2 after:w-1/2 after:bottom-1 after:bg-orange-400 after:right-0 after:-z-10">
@@ -15,8 +16,8 @@ export default function OurMission() {
                 </h2>
                 <p className="text-zinc-600">
                     Our mission is to redefine the real estate experience by providing personalized, professional, and
-                    innovative services that meet the unique needs of every client. Whether you’re buying, selling, or
-                    investing, we are here to make the process seamless and rewarding.
+                    innovative services that meet the unique needs of every client. Whether you&apos;re buying, selling,
+                    or investing, we are here to make the process seamless and rewarding.
                 </p>
             </div>
         </section>

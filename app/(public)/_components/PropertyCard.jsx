@@ -16,7 +16,7 @@ export default function PropertyCard(props) {
 
     return (
         <article>
-            <Image width={320} height={240} src={thumbnail_ulr} placeholder="blur" blurDataURL="/" />
+            <Image width={320} height={240} src={thumbnail_ulr} placeholder="blur" blurDataURL="/" alt={name} />
             <div>
                 <div>
                     <div>

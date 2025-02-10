@@ -8,7 +8,8 @@ import { toast } from "sonner";
 import extractArticleInformation from "@/app/(protected)/admin/dashboard/blog/_utils/extractArticleInformation";
 import { useRouter } from "next/navigation";
 
-export default function Editor({ title, body, assets, table, slug }) {
+export default function Editor(props) {
+    const { title, body, assets, table, slug } = props;
     const router = useRouter();
     const updateButtonRef = useRef(null);
     const titleInputRef = useRef(null);
@@ -65,7 +66,7 @@ export default function Editor({ title, body, assets, table, slug }) {
         return () => {
             updateButtonRef.current?.removeEventListener("click", _updateBlogPost);
         };
-    }, [updateButtonRef.current, quillEditorRef, titleInputRef.current]);
+    }, [router, quillEditorRef, props]);
 
     return (
         <>

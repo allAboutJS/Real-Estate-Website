@@ -25,7 +25,7 @@ export default function Properties() {
                         label: "Landed Properties",
                         component: (
                             <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
-                                There's nothing here.
+                                There&apos;s nothing here.
                             </div>
                         )
                     },
@@ -33,7 +33,7 @@ export default function Properties() {
                         label: "Buildings",
                         component: (
                             <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
-                                There's nothing here.
+                                There&apos;s nothing here.
                             </div>
                         )
                     }
