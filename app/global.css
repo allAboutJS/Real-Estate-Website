@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Work Sans";
+    src: url("/fonts/work_sans.ttf") format(truetype);
+}
+
+*::-webkit-scrollbar {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 0;
+    width: 0;
+    display: none;
+}
+
+* {
+    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+    scrollbar-width: 0;
+    scroll-behavior: smooth;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(/images/hero-real-estate-facts-trends.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+.input-field {
+    @apply flex flex-col gap-1;
+
+    label {
+        @apply text-slate-800;
+    }
+}
+
+.ql-editor {
+    @apply min-h-60 text-base;
+    font-size: 1rem !important;
+    /* word-break: break-all; */
+}
+
+nav[data-open="true"] {
+    @apply max-md:scale-100;
+}
+
+.blog-container {
+    .article h1 {
+        font-size: 2.5rem;
+    }
+
+    .article a {
+        color: #0077ff;
+    }
+
+    .article h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .article h3 {
+        font-size: 1.5rem;
+        margin-bottom: 7.5px;
+    }
+
+    .article p {
+        margin-bottom: 15px;
+        text-align: justify;
+    }
+
+    .article img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 600px) {
+        .article h1 {
+            font-size: 2rem;
+        }
+    }
+}
