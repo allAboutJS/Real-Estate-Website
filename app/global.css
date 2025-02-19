@@ -7,7 +7,7 @@
     src: url("/fonts/work_sans.ttf") format(truetype);
 }
 
-*::-webkit-scrollbar {
+*:not(.show-scrollbar)::-webkit-scrollbar {
     appearance: none;
     -webkit-appearance: none;
     height: 0;
@@ -15,9 +15,32 @@
     display: none;
 }
 
+*:not(.show-scrollbar) {
+    scrollbar-width: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e26;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
 * {
     font-family: "Work Sans", Arial, Helvetica, sans-serif;
-    scrollbar-width: 0;
     scroll-behavior: smooth;
 }
 

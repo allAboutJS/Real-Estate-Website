@@ -4,7 +4,7 @@ import { BiSolidDashboard, BiPaperPlane, BiBuildingHouse, BiMessage, BiCog, BiLo
 export default function Nav() {
     return (
         <nav
-            className="w-60 shadow-lg flex justify-between flex-col py-6 sticky top-12 left-0 h-[calc(100vh-48px)] overflow-y-auto"
+            className="w-60 shadow-lg bg-white flex justify-between flex-col py-6 top-20 left-0 bottom-0 fixed overflow-y-auto"
             role="navigation"
         >
             <ul>

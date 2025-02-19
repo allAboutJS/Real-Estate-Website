@@ -6,9 +6,9 @@ export default function DashboardLayout({ children }) {
     return (
         <>
             <Header />
-            <div className="flex min-h-screen">
+            <div className="bg-zinc-100 min-h-screen">
                 <Nav />
-                <main className="flex-1 bg-zinc-100 p-4">{children}</main>
+                <main className="p-4 ml-60">{children}</main>
             </div>
         </>
     );
