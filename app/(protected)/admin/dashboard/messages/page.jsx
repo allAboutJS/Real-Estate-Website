@@ -6,7 +6,7 @@ import sortMessages from "./_utils/sortMessages";
 
 export default async function Messages() {
     const { success, data } = await getMessages();
-    const { all, read, unread } = sortMessages(data);
+    const { all, read, unread } = sortMessages(success ? data : null);
 
     return (
         <div className="space-y-8">
@@ -14,15 +14,17 @@ export default async function Messages() {
                 <h1 className="text-3xl font-bold">Messages</h1>
             </section>
             <div className="space-y-4">
-                <div className="bg-yellow-300 text-yellow-700 p-4 text-sm text-center font-semibold">
-                    Please note that some numbers may not be registered on WhatsApp, and some people may provide fake
-                    emails.
-                </div>
+                {data?.length ? (
+                    <div className="bg-yellow-300 text-yellow-700 p-4 text-sm text-center font-semibold">
+                        Please note that some numbers may not be registered on WhatsApp, and some people may provide
+                        fake emails.
+                    </div>
+                ) : null}
                 <Tabs
                     data={[
-                        { label: "Unread", component: <MessageTable data={unread} /> },
-                        { label: "Read", component: <MessageTable data={read} /> },
-                        { label: "All", component: <MessageTable data={all} /> }
+                        { label: "Unread", component: unread?.length ? <MessageTable data={unread} /> : null },
+                        { label: "Read", component: read?.length ? <MessageTable data={read} /> : null },
+                        { label: "All", component: all?.length ? <MessageTable data={all} /> : null }
                     ]}
                 />
             </div>

@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Modal from "../../_components/Modal";
 import { FaPhone, FaWhatsapp } from "react-icons/fa6";
-import handleMessageDeletion from "../_utils/handleMessagedeletion";
+import handleMessageDeletion from "../_utils/handleMessageDeletion";
 import { useRouter } from "next/navigation";
+import markMessageAsRead from "../_actions/markMessageAsRead";
 
 export default function MessageTable({ data }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,7 +64,14 @@ export default function MessageTable({ data }) {
                 </tbody>
             </table>
             {isModalOpen && (
-                <Modal onDismiss={() => setIsModalOpen(false)} heading="View Message">
+                <Modal
+                    onDismiss={async () => (
+                        setIsModalOpen(false),
+                        currentlyViewedMessage.seen || (await markMessageAsRead(currentlyViewedMessage.id)),
+                        currentlyViewedMessage.seen || router.refresh()
+                    )}
+                    heading="View Message"
+                >
                     {currentlyViewedMessage && (
                         <div>
                             <div className="space-y-3">
