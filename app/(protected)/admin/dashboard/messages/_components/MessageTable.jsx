@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Modal from "../../_components/Modal";
 import { FaPhone, FaWhatsapp } from "react-icons/fa6";
+import handleMessageDeletion from "../_utils/handleMessagedeletion";
+import { useRouter } from "next/navigation";
 
 export default function MessageTable({ data }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentlyViewedMessage, setCurrentlyViewedMessage] = useState(null);
+    const router = useRouter();
 
     return (
         <div className="overflow-auto max-w-full show-scrollbar">
@@ -47,7 +50,12 @@ export default function MessageTable({ data }) {
                                     >
                                         View
                                     </button>
-                                    <button className="px-2 py-1 bg-red-600 text-white">Delete</button>
+                                    <button
+                                        onClick={() => handleMessageDeletion(message.id, router)}
+                                        className="px-2 py-1 bg-red-600 text-white"
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </td>
                         </tr>
