@@ -7,8 +7,7 @@ export default function Select(props) {
     const suggestionList = useRef(null);
     const { options, className, getValue, ...others } = props;
     const initialState = {
-        filteredOptions: options,
-        showAutocomplete: false,
+        showOptions: false,
         activeOptionIndex: -1,
         value: "",
         labelValue: ""
@@ -16,11 +15,8 @@ export default function Select(props) {
 
     const reducer = (state, action) => {
         switch (action.type) {
-            case "set_filtered_options":
-                return { ...state, filteredOptions: action.payload };
-
             case "set_autocomplete_visibility":
-                return { ...state, showAutocomplete: action.payload };
+                return { ...state, showOptions: action.payload };
 
             case "set_active_option_index":
                 return { ...state, activeOptionIndex: action.payload };
@@ -31,9 +27,6 @@ export default function Select(props) {
             case "set_label_value":
                 return { ...state, labelValue: action.payload };
 
-            case "reset_state":
-                return { ...initialState, value: state.value, labelValue: state.labelValue };
-
             default:
                 return state;
         }
@@ -42,8 +35,8 @@ export default function Select(props) {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const handleArrowDown = () => {
-        if (state.activeOptionIndex >= state.filteredOptions.length - 1)
-            dispatch({ type: "set_active_option_index", payload: state.filteredOptions.length - 1 });
+        if (state.activeOptionIndex >= options.length - 1)
+            dispatch({ type: "set_active_option_index", payload: options.length - 1 });
         else dispatch({ type: "set_active_option_index", payload: state.activeOptionIndex + 1 });
     };
 
@@ -53,8 +46,8 @@ export default function Select(props) {
     };
 
     const handleEnter = () => (
-        dispatch({ type: "set_label_value", payload: state.filteredOptions[state.activeOptionIndex].label }),
-        dispatch({ type: "set_value", payload: state.filteredOptions[state.activeOptionIndex].value })
+        dispatch({ type: "set_label_value", payload: options[state.activeOptionIndex].label }),
+        dispatch({ type: "set_value", payload: options[state.activeOptionIndex].value })
     );
 
     const handleKeydown = (e) => {
@@ -71,13 +64,6 @@ export default function Select(props) {
     };
 
     useEffect(() => {
-        const filteredOptions = options.filter(
-            (option) =>
-                option.label.toLowerCase().includes(state.labelValue.toLowerCase().trim()) ||
-                option.value.toLowerCase().includes(state.labelValue.toLowerCase().trim())
-        );
-
-        dispatch({ type: "set_filtered_options", payload: filteredOptions });
         getValue && getValue(state.value);
     }, [state, options, getValue]);
 
@@ -89,10 +75,13 @@ export default function Select(props) {
     }, [state.activeOptionIndex]);
 
     return (
-        <div className="relative">
+        <div className="relative input-field">
+            <label htmlFor={props.id}>{props.label}</label>
+            <input required={props.required} type="hidden" name={props.name} value={state.value} />
             <button
+                type="button"
                 aria-controls={id}
-                aria-expanded={state.showAutocomplete}
+                aria-expanded={state.showOptions}
                 aria-haspopup="listbox"
                 onFocus={() => dispatch({ type: "set_autocomplete_visibility", payload: true })}
                 onBlur={() =>
@@ -104,47 +93,40 @@ export default function Select(props) {
                         300
                     )
                 }
-                type="text"
                 value={state.labelValue}
                 onKeyDown={handleKeydown}
                 onChange={(e) => dispatch({ type: "set_label_value", payload: e.target.value })}
-                className={`${props.className} w-full min-w-0`}
+                className={`${props.className} w-full min-w-0 bg-slate-100 rounded-sm p-2 text-left`}
                 {...others}
             >
                 {state.labelValue || "Select an option"}
             </button>
-            {state.showAutocomplete && (
+            {state.showOptions && (
                 <ul
                     id={id}
                     ref={suggestionList}
                     className="absolute top-full bg-white w-full rounded-sm shadow-md z-10 text-sm max-h-40 overflow-x-clip overflow-y-auto"
                     role="listbox"
                 >
-                    {state.filteredOptions?.length ? (
-                        state.filteredOptions?.map((option, index) => (
-                            <li
-                                id={`suggestion-${index}`}
-                                role="option"
-                                aria-selected={index === state.activeOptionIndex}
-                                onClick={() => (
-                                    dispatch({ type: "set_value", payload: option.value }),
-                                    dispatch({ type: "set_label_value", payload: option.label }),
-                                    dispatch({ type: "reset_state" })
-                                )}
-                                key={option.value + Math.random().toString()}
-                                tabIndex={0}
-                                className={`${
-                                    index === state.activeOptionIndex && "bg-zinc-200"
-                                } p-2 whitespace-nowrap text-ellipsis cursor-pointer hover:bg-zinc-200`}
-                            >
-                                {option.label}
-                            </li>
-                        ))
-                    ) : (
-                        <li className="text-zinc-400 p-2 whitespace-nowrap text-ellipsis cursor-pointer text-center">
-                            <i>No match found</i>
+                    {options?.map((option, index) => (
+                        <li
+                            id={`suggestion-${index}`}
+                            role="option"
+                            aria-selected={index === state.activeOptionIndex}
+                            onClick={() => (
+                                dispatch({ type: "set_value", payload: option.value }),
+                                dispatch({ type: "set_label_value", payload: option.label }),
+                                dispatch({ type: "reset_state" })
+                            )}
+                            key={option.value + Math.random().toString()}
+                            tabIndex={0}
+                            className={`${
+                                index === state.activeOptionIndex && "bg-zinc-200"
+                            } p-2 whitespace-nowrap text-ellipsis cursor-pointer hover:bg-zinc-200`}
+                        >
+                            {option.label}
                         </li>
-                    )}
+                    ))}
                 </ul>
             )}
         </div>

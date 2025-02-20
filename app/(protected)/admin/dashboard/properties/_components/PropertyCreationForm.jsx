@@ -1,87 +1,46 @@
+import Input from "@/app/_components/Input";
+import Select from "@/app/_components/Select";
+import TextArea from "@/app/_components/TextArea";
+
 export default function PropertyCreationForm() {
     return (
         <form>
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                        Name
-                    </label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                        Address
-                    </label>
-                    <input
-                        type="text"
-                        name="address"
-                        id="address"
-                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
-                    />
-                </div>
+            <Input name="name" id="name" label="Name" errorMessage="Name is required." />
+            <div className="grid grid-cols-2 gap-4 mt-4">
+                <Input name="address" id="address" label="Address" errorMessage="Address is required." />
+                <Input name="price" id="price" label="Price" errorMessage="Price is required." />
             </div>
             <div className="grid grid-cols-2 gap-4 mt-4">
-                <div>
-                    <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-                        Price
-                    </label>
-                    <input
-                        type="text"
-                        name="price"
-                        id="price"
-                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="bedrooms" className="block text-sm font-medium text-gray-700">
-                        Bedrooms
-                    </label>
-                    <input
-                        type="text"
-                        name="bedrooms"
-                        id="bedrooms"
-                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
-                    />
-                </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 mt-4">
-                <div>
-                    <label htmlFor="bathrooms" className="block text-sm font-medium text-gray-700">
-                        Bathrooms
-                    </label>
-                    <input
-                        type="text"
-                        name="bathrooms"
-                        id="bathrooms"
-                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="area" className="block text-sm font-medium text-gray-700">
-                        Area
-                    </label>
-                    <input
-                        type="text"
-                        name="area"
-                        id="area"
-                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
-                    />
-                </div>
+                <Select
+                    placeholder="Select type"
+                    label="Property Type"
+                    name="type"
+                    options={[
+                        { label: "Landed Properties", value: "land" },
+                        { label: "Houses and Buildings", value: "building" },
+                        { label: "Warehouse", value: "warehouse" },
+                        { label: "Shop", value: "shop" },
+                        { label: "Office", value: "office" },
+                        { label: "Apartment", value: "apartment" }
+                    ]}
+                />
+                <Select
+                    placeholder="Select type"
+                    label="Availability Status"
+                    name="availability_status"
+                    options={[
+                        { label: "Sale", value: "sale" },
+                        { label: "Rent", value: "rent" }
+                    ]}
+                />
             </div>
             <div className="mt-4">
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-                    Description
-                </label>
-                <textarea
+                <TextArea
                     name="description"
                     id="description"
-                    className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full h-48"
-                ></textarea>
+                    label="Description"
+                    errorMessage="Description is required."
+                />
             </div>
             <div className="mt-4">
                 <label htmlFor="images" className="block text-sm font-medium text-gray-700">
@@ -95,7 +54,7 @@ export default function PropertyCreationForm() {
                 />
             </div>
             <div className="mt-4">
-                <button className="px-4 py-2 bg-black text-white rounded-md">Create Property</button>
+                <button className="px-4 py-2 bg-black text-white w-full">CREATE PROPERTY</button>
             </div>
         </form>
     );
