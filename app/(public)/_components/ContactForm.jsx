@@ -1,20 +1,21 @@
 "use client";
 
+import Input from "@/app/_components/Input";
 import uploadMessage from "../_actions/uploadMessage";
-import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import TextArea from "@/app/_components/TextArea";
 
 export default function ContactForm() {
     const {
         register,
         reset,
-        formState: { errors },
+        formState: { errors, isSubmitting },
         handleSubmit
     } = useForm({ mode: "all" });
     const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const fullnameRegexp = /^[A-Za-z]+(?: [A-Za-z'-]+)*$/;
-    const phoneNumberRegexp = /^\+?[1-9]\d{1,14}$/;
+    const phoneNumberRegexp = /^\+?[0-9]{1,14}$/;
     const messageRegexp = /^[\s\S]{1,500}$/;
 
     const submitForm = async (form) => {
@@ -33,115 +34,68 @@ export default function ContactForm() {
             action={handleSubmit(submitForm)}
             className="mt-6 bg-gray-50 p-4 max-w-md mx-auto text-sm space-y-3 shadow-lg"
         >
-            <div className="input-field">
-                <label htmlFor="full-name">Full Name</label>
-                <input
-                    className="min-w-0 bg-slate-100 rounded-sm p-2"
-                    type="text"
-                    placeholder="John Smith"
-                    id="full-name"
-                    {...register("fullname", {
-                        pattern: {
-                            value: fullnameRegexp,
-                            message: "Input is invalid."
-                        },
-                        required: {
-                            value: true,
-                            message: "Your fullname is required."
-                        },
-                        maxLength: {
-                            value: 100,
-                            message: "Too long."
-                        }
-                    })}
-                />
-                {errors["fullname"] && <small className="text-red-600">{errors["fullname"]?.message}</small>}
-            </div>
-            <div className="input-field">
-                <label htmlFor="email">Email</label>
-                <input
-                    className="min-w-0 bg-slate-100 rounded-sm p-2"
-                    type="email"
-                    placeholder="mail@provider.com"
-                    id="email"
-                    {...register("email", {
-                        pattern: {
-                            value: emailRegexp,
-                            message: "Input is invalid."
-                        },
-                        required: {
-                            value: true,
-                            message: "Your email is required."
-                        },
-                        maxLength: {
-                            value: 100,
-                            message: "Too long."
-                        }
-                    })}
-                />
-                {errors["email"] && <small className="text-red-600">{errors["email"]?.message}</small>}
-            </div>
-            <div className="input-field">
-                <label htmlFor="phone-number">Phone Number</label>
-                <input
-                    className="min-w-0 bg-slate-100 rounded-sm p-2"
-                    type="tel"
-                    placeholder="+234000000000"
-                    id="phone-number"
-                    {...register("phoneNumber", {
-                        pattern: {
-                            value: phoneNumberRegexp,
-                            message: "Input is invalid."
-                        },
-                        required: {
-                            value: true,
-                            message: "Your phone number is required."
-                        },
-                        maxLength: {
-                            value: 14,
-                            message: "Too long."
-                        }
-                    })}
-                />
-                {errors["phoneNumber"] && <small className="text-red-600">{errors["phoneNumber"]?.message}</small>}
-            </div>
-            <div className="input-field">
-                <label htmlFor="message">Message</label>
-                <textarea
-                    className="min-w-0 bg-slate-100 rounded-sm p-2 min-h-20"
-                    placeholder="Write a message..."
-                    id="message"
-                    {...register("message", {
-                        pattern: {
-                            value: messageRegexp,
-                            message: "Input is invalid."
-                        },
-                        required: {
-                            value: true,
-                            message: "Enter your message."
-                        },
-                        maxLength: {
-                            value: 500,
-                            message: "Max character length exceeded."
-                        }
-                    })}
-                ></textarea>
-                {errors["message"] && <small className="text-red-600">{errors["message"]?.message}</small>}
-            </div>
-            <SubmitButton />
+            <Input
+                type="text"
+                label="Fullname"
+                placeholder="John Smith"
+                id="full-name"
+                name="fullname"
+                pattern={fullnameRegexp}
+                errorMessage="Your fullname is required."
+                register={register}
+                errors={errors}
+            />
+            <Input
+                type="email"
+                label="Email"
+                placeholder="mail@provider.com"
+                id="email"
+                name="email"
+                pattern={emailRegexp}
+                errorMessage="Your email is required."
+                register={register}
+                errors={errors}
+            />
+            <Input
+                type="tel"
+                label="Phone Number"
+                placeholder="+234000000000"
+                id="phone-number"
+                name="phoneNumber"
+                pattern={phoneNumberRegexp}
+                errorMessage="Your phone number is required."
+                register={register}
+                errors={errors}
+            />
+            <TextArea
+                type="textarea"
+                label="Message"
+                placeholder="Write a message..."
+                id="message"
+                name="message"
+                validations={{
+                    pattern: {
+                        value: messageRegexp,
+                        message: "Input is invalid."
+                    },
+                    required: {
+                        value: true,
+                        message: "Enter your message."
+                    },
+                    maxLength: {
+                        value: 500,
+                        message: "Max character length exceeded."
+                    }
+                }}
+                register={register}
+                errors={errors}
+            />
+            <button
+                disabled={isSubmitting}
+                className="p-2 bg-black text-white w-full disabled:cursor-not-allowed disabled:opacity-50"
+            >
+                {isSubmitting ? "PLEASE WAIT..." : "SEND"}
+            </button>
         </form>
-    );
-}
-
-function SubmitButton() {
-    const { pending } = useFormStatus();
-
-    return (
-        <button
-            disabled={pending}
-            className="p-2 bg-black text-white w-full disabled:cursor-not-allowed disabled:opacity-50"
-        >
-            {pending ? "PLEASE WAIT..." : "SEND"}
-        </button>
     );
 }
