@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Modal from "../../_components/Modal";
 import { FaPhone, FaWhatsapp } from "react-icons/fa6";
-import handleMessageDeletion from "../_utils/handleMessageDeletion";
+import handleMessageDeletion from "../_actions/handleMessageDeletion";
 import { useRouter } from "next/navigation";
 import markMessageAsRead from "../_actions/markMessageAsRead";
 
