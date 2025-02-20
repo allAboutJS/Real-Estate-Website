@@ -5,7 +5,7 @@ import Modal from "../../_components/Modal";
 import { FaPhone, FaWhatsapp } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import markMessageAsRead from "../_actions/markMessageAsRead";
-import handleMessageDeletion from "../_utils/handleMessageDeletion";
+import handleMessageDeletion from "@/app/(protected)/admin/dashboard/messages/_utils/handleMessageDeletion";
 
 export default function MessageTable({ data }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
