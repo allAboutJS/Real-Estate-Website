@@ -15,7 +15,7 @@ export default function TextArea({ register, errors, name, label, validations, .
                     name={name}
                 ></textarea>
             )}
-            {errors["message"] && <small className="text-red-600">{errors["message"]?.message}</small>}
+            {errors && errors[name] && <small className="text-red-600">{errors && errors[name]?.message}</small>}
         </div>
     );
 }

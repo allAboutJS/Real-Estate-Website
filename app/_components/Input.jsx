@@ -18,7 +18,9 @@ export default function Input({ register, errors, pattern, errorMessage, name, l
                             }
                         })}
                     />
-                    {errors[name] && <small className="text-red-600">{errors[name]?.message}</small>}
+                    {errors && errors[name] && (
+                        <small className="text-red-600">{errors && errors[name]?.message}</small>
+                    )}
                 </>
             ) : (
                 <input className="min-w-0 bg-slate-100 rounded-sm p-2" name={name} {...otherProps} />
