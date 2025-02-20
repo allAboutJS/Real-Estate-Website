@@ -20,10 +20,10 @@ const initTables = async () => {
             `);
         await client.query(`
                 CREATE TABLE IF NOT EXISTS blog_posts (
-                    slug VARCHAR UNIQUE,
-                    title VARCHAR,
-                    summary VARCHAR,
-                    featured_image_url VARCHAR,
+                    slug VARCHAR(100) UNIQUE,
+                    title TEXT,
+                    summary TEXT,
+                    featured_image_url TEXT,
                     body TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     last_updated_at TIMESTAMP,
@@ -64,20 +64,18 @@ const initTables = async () => {
         await client.query(`
             CREATE TABLE IF NOT EXISTS properties (
                 id SERIAL PRIMARY KEY,
-                title VARCHAR,
+                title TEXT,
                 description TEXT,
                 price NUMERIC,
-                location VARCHAR,
-                featured_image_url VARCHAR,
+                location TEXT,
+                featured_image_url TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP,
                 rooms_count INTEGER,
-                bathrooms_count INTEGER,
-                sitting_rooms_count INTEGER,
-                type VARCHAR,
+                type VARCHAR(10) CHECK (type IN ('land', 'house', 'apartment', 'office', 'shop', 'warehouse')) NOT NULL,
+                for VARCHAR(4) CHECK (for IN ('sale', 'rent')) NOT NULL,
                 dimensions JSON,
-                bq_count INTEGER,
-                toilets_count INTEGER
+                assets JSON,
             )
         `);
     } catch {
