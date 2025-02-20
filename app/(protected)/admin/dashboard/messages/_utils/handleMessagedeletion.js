@@ -1,8 +1,7 @@
 import { toast } from "sonner";
 import ToastOptions from "../../blog/[slug]/_components/ToastOptions";
-import deleteMessage from "../_actions/delateMessage";
 
-const handleMessageDeletion = async (messageId, router) => {
+const handleMessageDeletion = async (messageId, router, deleteMessage) => {
     let toastId;
     toastId = toast.warning("Are you sure you want to delete this message?", {
         action: (
