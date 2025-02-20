@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
 import Tabs from "../_components/Tabs";
+import Create from "./_components/Create";
 
 export const metadata = {
     title: "Admin Dashboard - Properties"
@@ -11,18 +10,12 @@ export default function Properties() {
         <div className="space-y-8">
             <section className="flex justify-between">
                 <h1 className="text-3xl font-bold">Properties</h1>
-                <Link
-                    prefetch
-                    className="bg-black text-white py-2 px-4 justify-center flex items-center gap-2"
-                    href="./blog/create"
-                >
-                    <CgMathPlus /> CREATE
-                </Link>
+                <Create />
             </section>
             <Tabs
                 data={[
                     {
-                        label: "Landed Properties",
+                        label: "Published",
                         component: (
                             <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
                                 There&apos;s nothing here.
@@ -30,7 +23,7 @@ export default function Properties() {
                         )
                     },
                     {
-                        label: "Buildings",
+                        label: "Archived",
                         component: (
                             <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
                                 There&apos;s nothing here.
