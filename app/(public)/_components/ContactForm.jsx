@@ -36,7 +36,7 @@ export default function ContactForm() {
             <div className="input-field">
                 <label htmlFor="full-name">Full Name</label>
                 <input
-                    className="min-w-0 bg-slate-100 rounded-sm p-1"
+                    className="min-w-0 bg-slate-100 rounded-sm p-2"
                     type="text"
                     placeholder="John Smith"
                     id="full-name"
@@ -60,7 +60,7 @@ export default function ContactForm() {
             <div className="input-field">
                 <label htmlFor="email">Email</label>
                 <input
-                    className="min-w-0 bg-slate-100 rounded-sm p-1"
+                    className="min-w-0 bg-slate-100 rounded-sm p-2"
                     type="email"
                     placeholder="mail@provider.com"
                     id="email"
@@ -84,7 +84,7 @@ export default function ContactForm() {
             <div className="input-field">
                 <label htmlFor="phone-number">Phone Number</label>
                 <input
-                    className="min-w-0 bg-slate-100 rounded-sm p-1"
+                    className="min-w-0 bg-slate-100 rounded-sm p-2"
                     type="tel"
                     placeholder="+234000000000"
                     id="phone-number"
@@ -108,7 +108,7 @@ export default function ContactForm() {
             <div className="input-field">
                 <label htmlFor="message">Message</label>
                 <textarea
-                    className="min-w-0 bg-slate-100 rounded-sm p-1 min-h-20"
+                    className="min-w-0 bg-slate-100 rounded-sm p-2 min-h-20"
                     placeholder="Write a message..."
                     id="message"
                     {...register("message", {

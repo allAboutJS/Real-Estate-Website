@@ -10,7 +10,7 @@ export default function PropertyCreationForm() {
                         type="text"
                         name="name"
                         id="name"
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
                     />
                 </div>
                 <div>
@@ -21,7 +21,7 @@ export default function PropertyCreationForm() {
                         type="text"
                         name="address"
                         id="address"
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
                     />
                 </div>
             </div>
@@ -34,7 +34,7 @@ export default function PropertyCreationForm() {
                         type="text"
                         name="price"
                         id="price"
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
                     />
                 </div>
                 <div>
@@ -45,7 +45,7 @@ export default function PropertyCreationForm() {
                         type="text"
                         name="bedrooms"
                         id="bedrooms"
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
                     />
                 </div>
             </div>
@@ -58,7 +58,7 @@ export default function PropertyCreationForm() {
                         type="text"
                         name="bathrooms"
                         id="bathrooms"
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
                     />
                 </div>
                 <div>
@@ -69,7 +69,7 @@ export default function PropertyCreationForm() {
                         type="text"
                         name="area"
                         id="area"
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                        className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
                     />
                 </div>
             </div>
@@ -80,7 +80,7 @@ export default function PropertyCreationForm() {
                 <textarea
                     name="description"
                     id="description"
-                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full h-48"
                 ></textarea>
             </div>
             <div className="mt-4">
@@ -91,7 +91,7 @@ export default function PropertyCreationForm() {
                     type="file"
                     name="images"
                     id="images"
-                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
                 />
             </div>
             <div className="mt-4">
