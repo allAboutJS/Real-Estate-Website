@@ -6,7 +6,6 @@ import { FaPhone, FaWhatsapp } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import markMessageAsRead from "../_actions/markMessageAsRead";
 import handleMessageDeletion from "../_utils/handleMessageDeletion";
-import deleteMessage from "../_actions/delateMessage";
 
 export default function MessageTable({ data }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,7 +52,7 @@ export default function MessageTable({ data }) {
                                         View
                                     </button>
                                     <button
-                                        onClick={() => handleMessageDeletion(message.id, router, deleteMessage)}
+                                        onClick={() => handleMessageDeletion(message.id, router)}
                                         className="px-2 py-1 bg-red-600 text-white"
                                     >
                                         Delete
