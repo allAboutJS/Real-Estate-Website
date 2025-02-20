@@ -74,7 +74,6 @@ const initTables = async () => {
                 rooms_count INTEGER,
                 type VARCHAR(10) CHECK (type IN ('land', 'house', 'apartment', 'office', 'shop', 'warehouse')) NOT NULL,
                 for VARCHAR(4) CHECK (for IN ('sale', 'rent')) NOT NULL,
-                dimensions JSON,
                 assets JSON,
             )
         `);
