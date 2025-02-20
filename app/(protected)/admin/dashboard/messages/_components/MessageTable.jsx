@@ -5,39 +5,9 @@ import Modal from "../../_components/Modal";
 import { FaPhone, FaWhatsapp } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import markMessageAsRead from "../_actions/markMessageAsRead";
-import { toast } from "sonner";
-import ToastOptions from "../../blog/[slug]/_components/ToastOptions";
-import deleteMessage from "../_actions/delateMessage";
+import dynamic from "next/dynamic";
 
-const handleMessageDeletion = async (messageId, router) => {
-    let toastId;
-    toastId = toast.warning("Are you sure you want to delete this message?", {
-        action: (
-            <ToastOptions
-                toastId={toastId}
-                onAccept={() =>
-                    toast.promise(
-                        () =>
-                            new Promise(async (resolve, reject) => {
-                                try {
-                                    toast.dismiss(toastId);
-                                    const { success } = await deleteMessage(messageId);
-                                    success ? (router.refresh(), resolve()) : reject();
-                                } catch {
-                                    reject();
-                                }
-                            }),
-                        {
-                            loading: "Deleting message...",
-                            success: "Message deleted successfully",
-                            error: "Failed to delete message"
-                        }
-                    )
-                }
-            />
-        )
-    });
-};
+const handleMessageDeletion = dynamic(() => import("../_utils/handleMessageDeletion"), { ssr: false });
 
 export default function MessageTable({ data }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
