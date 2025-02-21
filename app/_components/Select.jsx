@@ -2,9 +2,10 @@
 
 import { useEffect, useId, useReducer, useRef } from "react";
 
-export default function Select(props) {
+export default function Select({ errors, register, name, validations, setValue, ...props }) {
     const id = useId();
     const suggestionList = useRef(null);
+    const inputRef = useRef(null);
     const { options, className, getValue, ...others } = props;
     const initialState = {
         showOptions: false,
@@ -26,6 +27,9 @@ export default function Select(props) {
 
             case "set_label_value":
                 return { ...state, labelValue: action.payload };
+
+            case "reset_state":
+                return { ...initialState, value: state.value, labelValue: state.labelValue };
 
             default:
                 return state;
@@ -65,6 +69,7 @@ export default function Select(props) {
 
     useEffect(() => {
         getValue && getValue(state.value);
+        setValue && setValue(name, state.value);
     }, [state, options, getValue]);
 
     useEffect(() => {
@@ -77,7 +82,11 @@ export default function Select(props) {
     return (
         <div className="relative input-field">
             <label htmlFor={props.id}>{props.label}</label>
-            <input required={props.required} type="hidden" name={props.name} value={state.value} />
+            {register ? (
+                <input type="text" className="hidden" {...register(name, validations)} value={state.value} />
+            ) : (
+                <input type="text" className="hidden" name={name} value={state.value} />
+            )}
             <button
                 type="button"
                 aria-controls={id}
@@ -93,7 +102,6 @@ export default function Select(props) {
                         300
                     )
                 }
-                value={state.labelValue}
                 onKeyDown={handleKeydown}
                 onChange={(e) => dispatch({ type: "set_label_value", payload: e.target.value })}
                 className={`${props.className} w-full min-w-0 bg-slate-100 rounded-sm p-2 text-left`}
@@ -101,6 +109,7 @@ export default function Select(props) {
             >
                 {state.labelValue || "Select an option"}
             </button>
+            {errors && errors[name] && <small className="text-red-600">{errors && errors[name]?.message}</small>}
             {state.showOptions && (
                 <ul
                     id={id}

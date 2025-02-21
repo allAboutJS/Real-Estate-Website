@@ -13,7 +13,7 @@ export default function Input({ register, errors, pattern, errorMessage, name, l
                                 message: "Input is invalid."
                             },
                             required: {
-                                value: true,
+                                value: otherProps.required,
                                 message: errorMessage
                             }
                         })}
