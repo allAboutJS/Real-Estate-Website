@@ -4,7 +4,7 @@ import getBlogPostsMetadata from "@/app/_actions/getBlogPostsMetadata";
 
 export default async function LatestBlogPosts() {
     unstable_noStore();
-    const { success, data } = await getBlogPostsMetadata(4);
+    const { success, data } = await getBlogPostsMetadata(4, true);
 
     return (
         <section>
