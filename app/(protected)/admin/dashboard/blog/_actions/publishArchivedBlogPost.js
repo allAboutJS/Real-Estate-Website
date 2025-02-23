@@ -1,10 +1,14 @@
+"use server";
+
 import getDbClient from "@/app/_config/dbConfig";
 
-const publishDraft = async (slug) => {
+const publishArchivedBlogPost = async (slug) => {
     const client = getDbClient();
 
     try {
-        const transferQuery = `UPDATE blog_posts  SET is_draft = false WHERE slug = $1`;
+        await client.connect();
+
+        const transferQuery = "UPDATE blog_posts  SET archived = false, is_draft = false WHERE slug = $1";
 
         await client.query(transferQuery, [slug]);
         return { success: true };
@@ -15,4 +19,4 @@ const publishDraft = async (slug) => {
     }
 };
 
-export default publishDraft;
+export default publishArchivedBlogPost;

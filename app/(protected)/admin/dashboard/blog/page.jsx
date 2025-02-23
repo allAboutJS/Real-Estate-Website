@@ -1,17 +1,20 @@
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
 import Tabs from "../_components/Tabs";
-import { Suspense } from "react";
 import PublishedBlogPosts from "./_components/PublishedBlogPosts";
-import PostsOptimisticUi from "./_components/PostsOptimisticUi";
 import DraftedBlogPosts from "./_components/DraftedBlogPosts";
 import ArchivedBlogPosts from "./_components/ArchivedBlogPosts";
+import { unstable_noStore } from "next/cache";
+import getBlogPostsMetadata from "@/app/_actions/getBlogPostsMetadata";
 
 export const metadata = {
     title: "Admin Dashboard - Blog"
 };
 
-export default function Blog() {
+export default async function Blog() {
+    unstable_noStore();
+    const { success, data } = await getBlogPostsMetadata();
+
     return (
         <div className="space-y-8">
             <section className="flex justify-between">
@@ -27,27 +30,15 @@ export default function Blog() {
                 data={[
                     {
                         label: "Published",
-                        component: (
-                            <Suspense fallback={<PostsOptimisticUi />}>
-                                <PublishedBlogPosts />
-                            </Suspense>
-                        )
+                        component: <PublishedBlogPosts posts={data} success={success} />
                     },
                     {
                         label: "Archived",
-                        component: (
-                            <Suspense fallback={<PostsOptimisticUi />}>
-                                <ArchivedBlogPosts />
-                            </Suspense>
-                        )
+                        component: <ArchivedBlogPosts posts={data} success={success} />
                     },
                     {
                         label: "Drafts",
-                        component: (
-                            <Suspense fallback={<PostsOptimisticUi />}>
-                                <DraftedBlogPosts />
-                            </Suspense>
-                        )
+                        component: <DraftedBlogPosts posts={data} success={success} />
                     }
                 ]}
             />

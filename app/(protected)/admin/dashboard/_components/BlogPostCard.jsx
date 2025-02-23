@@ -3,16 +3,7 @@ import Link from "next/link";
 import { BiEdit } from "react-icons/bi";
 import { CgEye } from "react-icons/cg";
 
-export default function BlogPostCard({
-    featured_image_url,
-    title,
-    summary,
-    slug,
-    created_at,
-    last_updated_at,
-    archived,
-    drafted
-}) {
+export default function BlogPostCard({ featured_image_url, title, summary, slug, created_at, last_updated_at }) {
     return (
         <div className="bg-white shadow flex flex-col">
             <Image
@@ -38,17 +29,13 @@ export default function BlogPostCard({
             <div className="grid text-sm font-semibold gap-1 p-1 grid-cols-2">
                 <Link
                     className="hover:bg-zinc-200 bg-zinc-100 flex justify-center items-center gap-1 p-2"
-                    href={`/admin/dashboard/blog/${slug}${archived ? "?table=blog_archives" : ""}${
-                        drafted ? "?table=blog_drafts" : ""
-                    }`}
+                    href={`/admin/dashboard/blog/${slug}`}
                 >
                     View <CgEye />
                 </Link>
                 <Link
                     className="hover:bg-zinc-200 bg-zinc-100 flex justify-center items-center gap-1 p-2"
-                    href={`/admin/dashboard/blog/edit/${slug}${archived ? "?table=blog_archives" : ""}${
-                        drafted ? "?table=blog_drafts" : ""
-                    }`}
+                    href={`/admin/dashboard/blog/edit/${slug}`}
                 >
                     Edit <BiEdit />
                 </Link>

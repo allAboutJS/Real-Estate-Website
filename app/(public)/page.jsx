@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import PostsOptimisticUi from "../_components/PostsOptimisticUi";
 import ContactSection from "./_components/ContactSection";
 import FeaturedProperties from "./_components/FeaturedProperties";
 import Hero from "./_components/Hero";
@@ -11,7 +13,9 @@ export default function Page() {
             <Hero />
             <FeaturedProperties />
             <Testimonials />
-            <LatestBlogPosts />
+            <Suspense fallback={<PostsOptimisticUi />}>
+                <LatestBlogPosts />
+            </Suspense>
             <ContactSection heading="Get In Touch With Us" />
             <Subscribe />
         </main>

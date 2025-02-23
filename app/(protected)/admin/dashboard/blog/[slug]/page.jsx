@@ -1,27 +1,25 @@
 import getBlogPost from "@/app/_actions/getBlogPost";
 import ActionButtons from "./_components/ActionButtons";
 
-export const generateMetadata = async ({ params, searchParams }) => {
+export const generateMetadata = async ({ params }) => {
     const { slug } = await params;
-    const { table } = await searchParams;
-    const { success, data } = await getBlogPost(slug, table);
+    const { success, data } = await getBlogPost(slug);
 
     return {
         title: success ? `Viewing: ${data.title}` : `404 - Blog Post Not Found`
     };
 };
 
-export default async function SingleBlogPost({ params, searchParams }) {
+export default async function SingleBlogPost({ params }) {
     const { slug } = await params;
-    const { table } = await searchParams;
-    const { success, data } = await getBlogPost(slug, table);
+    const { success, data } = await getBlogPost(slug);
 
     return (
         <div>
             {success ? (
                 <div>
                     <div className="text-sm">
-                        <ActionButtons table={table} slug={slug} />
+                        <ActionButtons slug={slug} isDraft={data.is_draft} archived={data.archived} />
                     </div>
                     <article className="bg-white shadow p-4 space-y-3 max-w-screen-md m-auto blog-container">
                         <h1 className="text-3xl font-bold capitalize">{data.title}</h1>

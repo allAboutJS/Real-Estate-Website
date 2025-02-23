@@ -2,19 +2,13 @@
 
 import getDbClient from "@/app/_config/dbConfig";
 
-const updateBlogPost = async (slug, blogPost, table = "blog_posts") => {
+const updateBlogPost = async (slug, blogPost, { asDraft = false, archived = false }) => {
     const client = getDbClient();
 
     try {
         const { title, featuredImageUrl, summary, body, assets } = blogPost;
         const updateQuery =
-            table === "blog_posts"
-                ? "UPDATE blog_posts SET title = $1, slug = $2, body = $3, summary = $4, featured_image_url = $5, assets = $6, last_updated_at = $7 WHERE slug = $8"
-                : table === "blog_drafts"
-                ? "UPDATE blog_drafts SET title = $1, slug = $2, body = $3, summary = $4, featured_image_url = $5, assets = $6, last_updated_at = $7 WHERE slug = $8"
-                : table === "blog_archives"
-                ? "UPDATE blog_archives SET title = $1, slug = $2, body = $3, summary = $4, featured_image_url = $5, assets = $6, last_updated_at = $7 WHERE slug = $8"
-                : "";
+            "UPDATE blog_posts SET title = $1, slug = $2, body = $3, summary = $4, featured_image_url = $5, assets = $6, last_updated_at = $7, is_draft = $8, archived = $9 WHERE slug = $10";
 
         await client.connect();
         await client.query(updateQuery, [
@@ -25,6 +19,8 @@ const updateBlogPost = async (slug, blogPost, table = "blog_posts") => {
             featuredImageUrl,
             assets,
             new Date(),
+            asDraft,
+            archived,
             slug
         ]);
 

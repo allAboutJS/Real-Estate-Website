@@ -7,18 +7,6 @@ const initTables = async () => {
     try {
         await client.connect();
         await client.query(`
-                CREATE TABLE IF NOT EXISTS blog_drafts (
-                    slug VARCHAR UNIQUE,
-                    title VARCHAR,
-                    summary VARCHAR,
-                    featured_image_url VARCHAR,
-                    body TEXT,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    last_updated_at TIMESTAMP,
-                    assets JSON
-                )
-            `);
-        await client.query(`
                 CREATE TABLE IF NOT EXISTS blog_posts (
                     slug VARCHAR(100) UNIQUE,
                     title TEXT,
@@ -27,19 +15,9 @@ const initTables = async () => {
                     body TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     last_updated_at TIMESTAMP,
-                    assets JSON
-                )
-            `);
-        await client.query(`
-                CREATE TABLE IF NOT EXISTS blog_archives (
-                    slug VARCHAR UNIQUE,
-                    title VARCHAR,
-                    summary VARCHAR,
-                    featured_image_url VARCHAR,
-                    body TEXT,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    last_updated_at TIMESTAMP,
-                    assets JSON
+                    assets JSON,
+                    archived BOOLEAN DEFAULT FALSE,
+                    is_draft BOOLEAN DEFAULT FALSE
                 )
             `);
         await client.query(`

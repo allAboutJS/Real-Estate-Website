@@ -1,11 +1,10 @@
 import archiveBlogPost from "../../_actions/archiveBlogPost";
 import deletePost from "../../_actions/deletePost";
-import publishBlogPost from "../../_actions/publishBlogPost";
+import publishArchivedBlogPost from "../../_actions/publishArchivedBlogPost";
 import ToastOptions from "../_components/ToastOptions";
 import { toast } from "sonner";
 
-const execCommand = async (command, table, slug, router) => {
-    const postType = table === "blog_drafts" ? "draft" : "post";
+const execCommand = async (command, slug, router) => {
     let toastId;
 
     if (command === "delete") {
@@ -15,7 +14,7 @@ const execCommand = async (command, table, slug, router) => {
                     new Promise(async (resolve, reject) => {
                         try {
                             toast.dismiss(toastId);
-                            const { success } = await deletePost(slug, table);
+                            const { success } = await deletePost(slug);
 
                             if (success === true) {
                                 resolve();
@@ -33,7 +32,7 @@ const execCommand = async (command, table, slug, router) => {
                 }
             );
 
-        toastId = toast.warning(`Are you sure you want to delete this ${postType}`, {
+        toastId = toast.warning("Are you sure you want to delete this post", {
             action: <ToastOptions toastId={toastId} onAccept={_delete} />
         });
     } else if (command === "archive") {
@@ -43,7 +42,7 @@ const execCommand = async (command, table, slug, router) => {
                     new Promise(async (resolve, reject) => {
                         try {
                             toast.dismiss(toastId);
-                            const { success } = await archiveBlogPost(slug, table);
+                            const { success } = await archiveBlogPost(slug);
 
                             if (success === true) {
                                 resolve();
@@ -61,7 +60,7 @@ const execCommand = async (command, table, slug, router) => {
                 }
             );
 
-        toastId = toast.warning(`Are you sure you want to archive this ${postType}`, {
+        toastId = toast.warning("Are you sure you want to archive this post", {
             action: <ToastOptions toastId={toastId} onAccept={_archive} />
         });
     } else if (command === "publish") {
@@ -71,7 +70,7 @@ const execCommand = async (command, table, slug, router) => {
                     new Promise(async (resolve, reject) => {
                         try {
                             toast.dismiss(toastId);
-                            const { success } = await publishBlogPost(slug, table);
+                            const { success } = await publishArchivedBlogPost(slug);
 
                             if (success === true) {
                                 resolve();
@@ -89,7 +88,7 @@ const execCommand = async (command, table, slug, router) => {
                 }
             );
 
-        toastId = toast.warning(`Are you sure you want to publish this ${postType}`, {
+        toastId = toast.warning("Are you sure you want to publish this post", {
             action: <ToastOptions toastId={toastId} onAccept={_publish} />
         });
     }

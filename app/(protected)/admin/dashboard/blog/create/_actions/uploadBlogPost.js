@@ -9,10 +9,12 @@ const uploadBlogPost = async (blogPost, asDraft = false) => {
 
         await client.connect();
         await client.query(
-            `INSERT INTO ${
-                asDraft ? "blog_drafts" : "blog_posts"
-            } (title, slug, body, summary, featured_image_url, assets) VALUES ($1, $2, $3, $4, $5, $6)`,
-            [title, slug, body, summary, featuredImageUrl, assets]
+            asDraft === true
+                ? "INSERT INTO blog_posts (title, slug, body, summary, featured_image_url, assets, is_draft) VALUES ($1, $2, $3, $4, $5, $6, $7)"
+                : "INSERT INTO blog_posts (title, slug, body, summary, featured_image_url, assets) VALUES ($1, $2, $3, $4, $5, $6)",
+            asDraft
+                ? [title, slug, body, summary, featuredImageUrl, assets, true]
+                : [title, slug, body, summary, featuredImageUrl, assets]
         );
 
         return { success: true };

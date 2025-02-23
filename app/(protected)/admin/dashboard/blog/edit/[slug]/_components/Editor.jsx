@@ -9,7 +9,7 @@ import extractArticleInformation from "@/app/(protected)/admin/dashboard/blog/_u
 import { useRouter } from "next/navigation";
 
 export default function Editor(props) {
-    const { title, body, assets, table, slug } = props;
+    const { title, body, assets, slug, is_draft, archived } = props;
     const router = useRouter();
     const updateButtonRef = useRef(null);
     const titleInputRef = useRef(null);
@@ -35,7 +35,10 @@ export default function Editor(props) {
                                     true,
                                     assets
                                 );
-                                const { success } = await updateBlogPost(slug, blogInfo, table);
+                                const { success } = await updateBlogPost(slug, blogInfo, {
+                                    asDraft: is_draft,
+                                    archived
+                                });
 
                                 if (success) {
                                     resolve(success);
@@ -43,8 +46,7 @@ export default function Editor(props) {
                                         `/admin/dashboard/blog/edit/${blogInfo.slug}${table ? `?table=${table}` : ""}`
                                     );
                                 } else reject("Request failed!");
-                            } catch (e) {
-                                console.log(e);
+                            } catch {
                                 reject("Request failed!");
                             }
                         }),

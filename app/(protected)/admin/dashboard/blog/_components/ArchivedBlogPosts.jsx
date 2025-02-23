@@ -1,16 +1,13 @@
-import { unstable_noStore } from "next/cache";
-import fetchBlogPostsMetadata from "../../../../../_actions/getBlogPostsMetadata";
 import BlogPostCard from "../../_components/BlogPostCard";
 
-export default async function ArchivedBlogPosts() {
-    unstable_noStore();
-    const { success, data } = await fetchBlogPostsMetadata("blog_archives");
+export default function ArchivedBlogPosts({ posts, success }) {
+    const filteredPosts = posts.filter((blog) => blog.archived);
 
     return success ? (
-        data.length ? (
+        filteredPosts.length ? (
             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {data.map((blog) => (
-                    <BlogPostCard key={blog.slug} {...{ ...blog, archived: true }} />
+                {filteredPosts.map((blog) => (
+                    <BlogPostCard key={blog.slug} {...blog} />
                 ))}
             </section>
         ) : (

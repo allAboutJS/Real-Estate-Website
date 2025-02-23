@@ -1,15 +1,12 @@
-import { unstable_noStore } from "next/cache";
-import getBlogPostsMetadata from "@/app/_actions/getBlogPostsMetadata";
 import BlogPostCard from "../../_components/BlogPostCard";
 
-export default async function PublishedBlogPosts() {
-    unstable_noStore();
-    const { success, data } = await getBlogPostsMetadata();
+export default function PublishedBlogPosts({ posts, success }) {
+    const filteredPosts = posts.filter((blog) => !blog.archived && !blog.is_draft);
 
     return success ? (
-        data.length ? (
+        filteredPosts.length ? (
             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {data.map((blog) => (
+                {filteredPosts.map((blog) => (
                     <BlogPostCard key={blog.slug} {...blog} />
                 ))}
             </section>
