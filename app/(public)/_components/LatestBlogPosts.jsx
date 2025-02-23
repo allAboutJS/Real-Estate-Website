@@ -12,11 +12,15 @@ export default async function LatestBlogPosts() {
             <p className="text-zinc-600 text-center">
                 Read our most recent articles on all topics related to real estate in Nigeria
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 max-w-screen-xl mx-auto">
-                {data.map((post) => (
-                    <BlogPostCard key={post.slug} {...post} />
-                ))}
-            </div>
+            {success ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 max-w-screen-xl mx-auto">
+                    {data.map((post) => (
+                        <BlogPostCard key={post.slug} {...post} />
+                    ))}
+                </div>
+            ) : (
+                <p>Failed to fetch blog posts</p>
+            )}
         </section>
     );
 }
