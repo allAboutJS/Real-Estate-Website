@@ -7,7 +7,7 @@ export default function Dashboard() {
         <div className="space-y-8">
             <h1 className="text-3xl font-bold">Welcome Sir</h1>
             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
-                <div className="bg-blue-600 text-white p-4 space-y-2">
+                <div className="bg-zinc-600 text-white p-4 space-y-2">
                     <div className="text-lg font-semibold">Messages</div>
                     <div className="text-4xl font-black">10</div>
                 </div>
@@ -15,7 +15,7 @@ export default function Dashboard() {
                     <div className="text-lg font-semibold">Properties</div>
                     <div className="text-4xl font-black">23</div>
                 </div>
-                <div className="bg-orange-600 text-white p-4 space-y-2">
+                <div className="bg-zinc-600 text-white p-4 space-y-2">
                     <div className="text-lg font-semibold">Articles</div>
                     <div className="text-4xl font-black">5</div>
                 </div>

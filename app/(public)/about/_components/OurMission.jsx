@@ -11,7 +11,7 @@ export default function OurMission() {
                 alt="People in a business meeting"
             />
             <div>
-                <h2 className="text-3xl relative w-fit after:absolute after:h-2 after:w-1/2 after:bottom-1 after:bg-orange-400 after:right-0 after:-z-10">
+                <h2 className="text-3xl relative w-fit after:absolute after:h-2 after:w-1/2 after:bottom-1 after:bg-zinc-400 after:right-0 after:-z-10">
                     Our Mission
                 </h2>
                 <p className="text-zinc-600">

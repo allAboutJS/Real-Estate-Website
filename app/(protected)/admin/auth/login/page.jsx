@@ -55,7 +55,7 @@ function SubmitButton() {
     return (
         <button
             disabled={pending}
-            className="p-2 bg-blue-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-xl"
+            className="p-2 bg-zinc-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-xl"
         >
             {pending ? "PLEASE WAIT..." : "LOGIN"}
         </button>

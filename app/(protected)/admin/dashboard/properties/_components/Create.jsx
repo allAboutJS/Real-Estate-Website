@@ -12,7 +12,7 @@ export default function Create() {
         <>
             <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-blue-600 text-white py-2 px-4 justify-center flex items-center gap-2 rounded-lg"
+                className="bg-zinc-600 text-white py-2 px-4 justify-center flex items-center gap-2 rounded-lg"
             >
                 <CgMathPlus /> CREATE
             </button>

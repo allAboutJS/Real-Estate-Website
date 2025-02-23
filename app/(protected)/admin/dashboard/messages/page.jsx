@@ -16,7 +16,7 @@ export default async function Messages() {
             </section>
             <div className="space-y-4">
                 {data?.length ? (
-                    <div className="bg-yellow-300 text-yellow-700 p-4 text-sm text-center font-semibold">
+                    <div className="bg-zinc-300 text-zinc-700 p-4 text-sm text-center font-semibold">
                         Please note that some numbers may not be registered on WhatsApp, and some people may provide
                         fake emails.
                     </div>

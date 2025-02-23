@@ -55,7 +55,7 @@ export default function Nav() {
                 <ul className="flex gap-3 text-sm items-center">
                     <li>
                         <a
-                            className="flex items-center gap-1 py-1 px-2 bg-blue-200 rounded-full"
+                            className="flex items-center gap-1 py-1 px-2 bg-zinc-200 rounded-full"
                             href="tel:+2349072731774"
                         >
                             <CgPhone />
@@ -64,7 +64,7 @@ export default function Nav() {
                     </li>
                     <li>
                         <a
-                            className="flex items-center gap-1 py-1 px-2 bg-blue-200 rounded-full"
+                            className="flex items-center gap-1 py-1 px-2 bg-zinc-200 rounded-full"
                             href="mailto:ebubeaguproperties@gmail.com"
                         >
                             <CgMail />

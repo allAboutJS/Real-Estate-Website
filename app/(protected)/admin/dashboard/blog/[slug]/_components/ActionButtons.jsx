@@ -63,7 +63,7 @@ export default function ActionButtons({ table, slug }) {
                     </Link>
                     <button
                         onClick={() => execCommand("archive", table, slug, router)}
-                        className="p-2 bg-yellow-600 text-white"
+                        className="p-2 bg-zinc-600 text-white"
                     >
                         ARCHIVE
                     </button>

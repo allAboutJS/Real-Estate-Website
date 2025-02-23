@@ -13,8 +13,8 @@ export default function Tabs({ data }) {
                     <button
                         key={label}
                         className={`${
-                            activeTab.label === label ? "bg-blue-800 text-white" : "bg-blue-200 text-blue-800"
-                        } px-4 py-2 text-sm font-semibold border-r first:rounded-tl-xl last:rounded-tr-xl last:border-none border-r-blue-400`}
+                            activeTab.label === label ? "bg-zinc-800 text-white" : "bg-zinc-200 text-zinc-800"
+                        } px-4 py-2 text-sm font-semibold border-r first:rounded-tl-xl last:rounded-tr-xl last:border-none border-r-zinc-400`}
                         onClick={() => setActiveTab(data.find((tab) => tab.label === label))}
                     >
                         {label.toUpperCase()}

@@ -75,7 +75,7 @@ export default function MessageTable({ data }) {
                     {currentlyViewedMessage && (
                         <div>
                             <div className="space-y-3">
-                                <div className="bg-yellow-300 text-yellow-700 p-4 text-sm text-center font-semibold">
+                                <div className="bg-zinc-300 text-zinc-700 p-4 text-sm text-center font-semibold">
                                     Please note that some numbers may not be registered on WhatsApp, and some people may
                                     provide fake emails.
                                 </div>
@@ -113,7 +113,7 @@ export default function MessageTable({ data }) {
                                     <a
                                         target="_blank"
                                         href={`tel:${currentlyViewedMessage.phone_number}`}
-                                        className="bg-blue-600 text-white p-2 flex items-center gap-2 justify-center"
+                                        className="bg-zinc-600 text-white p-2 flex items-center gap-2 justify-center"
                                     >
                                         <FaPhone /> Dial the number
                                     </a>

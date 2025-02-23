@@ -10,7 +10,7 @@ export default function Pagination(props) {
             {pagination.map((page) => (
                 <button
                     className={`${
-                        page === currentPage ? "bg-blue-800 text-white font-bold" : "hover:bg-blue-400"
+                        page === currentPage ? "bg-zinc-800 text-white font-bold" : "hover:bg-zinc-400"
                     } p-2 text-sm bg-slate-100 h-8 w-8 flex items-center justify-center rounded-lg`}
                     key={Math.random()}
                 >

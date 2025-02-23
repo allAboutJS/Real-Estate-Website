@@ -33,7 +33,7 @@ function SearchBar() {
             </div>
             <div className="flex justify-center gap-1">
                 <Filters />
-                <button className="bg-blue-600 text-white p-1 px-2 rounded-lg">SEARCH</button>
+                <button className="bg-zinc-600 text-white p-1 px-2 rounded-lg">SEARCH</button>
             </div>
         </form>
     );
@@ -44,7 +44,7 @@ function Filters() {
         <div>
             <button
                 type="button"
-                className="px-2 py-1 border-blue-600 border flex gap-1 items-center rounded-lg text-blue-600"
+                className="px-2 py-1 border-zinc-600 border flex gap-1 items-center rounded-lg text-zinc-600"
             >
                 <CgOptions /> Filter
             </button>
