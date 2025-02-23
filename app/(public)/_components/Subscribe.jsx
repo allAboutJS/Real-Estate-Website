@@ -5,9 +5,15 @@ export default function Subscribe() {
             <p className="text-center text-zinc-600">
                 Subscribe to get timely updates when we list new properties and post new articles
             </p>
-            <form className="mt-8 flex gap-1 text-sm w-full max-w-screen-sm m-auto">
-                <input type="email" name="email" id="email" className="p-2 border border-zinc-600 flex-1" />
-                <button className="p-2 bg-black text-white">SUBSCRIBE</button>
+            <form className="mt-8 flex gap-1 text-sm w-full max-w-screen-sm m-auto bg-white shadow-sm p-1 rounded-full">
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="p-2 flex-1 rounded-xl outline-none"
+                    placeholder="Enter your email to subscribe..."
+                />
+                <button className="py-2 px-4 bg-blue-600 text-white rounded-full">SUBSCRIBE</button>
             </form>
         </section>
     );

@@ -16,7 +16,7 @@ export default function OurVision() {
                 height={350}
                 width={350}
                 src="/images/man-looking-at-the-stars-through-a-telescope.jpg"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-2xl"
                 alt="Man looking at the stars through a telescope"
             />
         </section>

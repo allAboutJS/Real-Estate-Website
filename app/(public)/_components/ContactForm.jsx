@@ -32,7 +32,7 @@ export default function ContactForm() {
     return (
         <form
             action={handleSubmit(submitForm)}
-            className="mt-6 bg-gray-50 p-4 max-w-md mx-auto text-sm space-y-3 shadow-lg"
+            className="mt-6 bg-gray-50 px-4 py-8 max-w-md mx-auto text-sm space-y-3 shadow-lg rounded-2xl"
         >
             <Input
                 type="text"
@@ -92,7 +92,7 @@ export default function ContactForm() {
             />
             <button
                 disabled={isSubmitting}
-                className="p-2 bg-black text-white w-full disabled:cursor-not-allowed disabled:opacity-50"
+                className="p-2 bg-blue-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-xl"
             >
                 {isSubmitting ? "PLEASE WAIT..." : "SEND"}
             </button>

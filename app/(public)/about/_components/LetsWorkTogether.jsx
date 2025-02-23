@@ -11,7 +11,7 @@ export default function LetsWorkTogether() {
                 width={350}
                 src="/images/handshake.jpg"
                 alt="Men shaking hands"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-2xl"
             />
             <div>
                 <h2 className="text-3xl relative w-fit after:absolute after:h-2 after:w-1/2 after:bottom-1 after:bg-orange-400 after:right-0 after:-z-10">

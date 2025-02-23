@@ -5,7 +5,7 @@ export default function Input({ register, errors, pattern, errorMessage, name, l
             {register ? (
                 <>
                     <input
-                        className="min-w-0 bg-slate-100 rounded-sm p-2"
+                        className="min-w-0 bg-slate-100 rounded-lg p-2"
                         {...otherProps}
                         {...register(name, {
                             pattern: {
@@ -23,7 +23,7 @@ export default function Input({ register, errors, pattern, errorMessage, name, l
                     )}
                 </>
             ) : (
-                <input className="min-w-0 bg-slate-100 rounded-sm p-2" name={name} {...otherProps} />
+                <input className="min-w-0 bg-slate-100 rounded-lg p-2" name={name} {...otherProps} />
             )}
         </div>
     );

@@ -5,6 +5,8 @@ import Select from "@/app/_components/Select";
 import TextArea from "@/app/_components/TextArea";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import createProperty from "../_actions/createProperty";
+import uploadImages from "../../_actions/uploadImages";
 
 export default function PropertyCreationForm() {
     const [images, setImages] = useState([]);
@@ -18,7 +20,6 @@ export default function PropertyCreationForm() {
     useEffect(() => {
         const imageInput = document.querySelector("#images");
         const displayImages = (e) => {
-            console.log("Running event listener");
             setImages((prev) => {
                 for (let image of prev) URL.revokeObjectURL(image);
                 return Array.from(e.target.files).map((file) => URL.createObjectURL(file));
@@ -29,8 +30,44 @@ export default function PropertyCreationForm() {
         return () => imageInput.removeEventListener("change", displayImages);
     }, []);
 
+    const readFileAsDataURL = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.onload = (e) => {
+                resolve(e.target.result);
+            };
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+
+            fileReader.readAsDataURL(file);
+        });
+    };
+
+    const parseFormAndSubmit = async (form) => {
+        try {
+            const imagesTextArr = await Promise.all(
+                Array.from(form.images).map(async (file) => {
+                    const base64ImageUrl = await readFileAsDataURL(file);
+                    return base64ImageUrl.replace(/^data:image\/[a-z]+;base64,/, "");
+                })
+            );
+
+            delete form.images;
+
+            const imagesInfo = await uploadImages(...imagesTextArr);
+            await createProperty({
+                ...form,
+                assets: imagesInfo,
+                featuredImageUrl: imagesInfo[0].url
+            });
+        } catch (error) {
+            console.error("Error in parseFormAndSubmit:", error);
+        }
+    };
+
     return (
-        <form onSubmit={handleSubmit(console.log)}>
+        <form onSubmit={handleSubmit(parseFormAndSubmit)}>
             <Input
                 register={register}
                 errors={errors}

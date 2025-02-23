@@ -7,7 +7,7 @@ export default function OurMission() {
                 height={350}
                 width={350}
                 src="/images/people-business-meeting.jpg"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-2xl"
                 alt="People in a business meeting"
             />
             <div>

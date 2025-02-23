@@ -3,15 +3,15 @@ import Image from "next/image";
 export default function BlogPostCard() {
     const images = ["/images/skyscrapper.avif", "/images/handshake.jpg", "/images/people-business-meeting.jpg"];
     return (
-        <article className="bg-zinc-100/30 shadow h-fit">
+        <article className="bg-white shadow-sm h-fit rounded-2xl p-4">
             <Image
                 src={images[Math.floor(Math.random() * images.length)]}
                 alt="Handshake"
                 width={400}
                 height={300}
-                className="w-full block aspect-video"
+                className="w-full block aspect-video rounded-xl"
             />
-            <div className="p-2">
+            <div>
                 <p className="text-zinc-800 text-xs">
                     <i>Posted on 3rd January, 2024.</i>
                 </p>

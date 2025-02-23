@@ -11,7 +11,7 @@ export default function Pagination(props) {
                 <button
                     className={`${
                         page === currentPage ? "bg-zinc-800 text-white font-bold" : "hover:bg-zinc-400"
-                    } p-2 text-sm bg-slate-100 h-6 w-6 flex items-center justify-center`}
+                    } p-2 text-sm bg-slate-100 h-6 w-6 flex items-center justify-center rounded-lg`}
                     key={Math.random()}
                 >
                     {page ? page : <FaEllipsis />}

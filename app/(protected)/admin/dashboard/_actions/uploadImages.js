@@ -7,17 +7,20 @@ import cloudinary from "@/app/_config/cloudinaryConfig";
 const uploadImages = async (...args) => {
     const imagesBinaries = transformImageDataTextToBinary(...args);
     const localImagesUrl = [];
-    const imagesUrl = [];
 
     try {
-        for (let i = 0; i < imagesBinaries.length; i++) {
-            const fileUrl = `./${Math.random()}.webp`;
-            await writeFile(fileUrl, imagesBinaries[i]);
+        const imagesUrl = await Promise.all(
+            imagesBinaries.map(async (imageBinary) => {
+                const fileUrl = `./${Math.random()}.webp`;
 
-            const uploadRes = await cloudinary.uploader.upload(fileUrl);
-            imagesUrl.push({ url: uploadRes.secure_url, id: uploadRes.asset_id, public_id: uploadRes.public_id });
-            localImagesUrl.push(fileUrl);
-        }
+                await writeFile(fileUrl, imageBinary);
+
+                const uploadRes = await cloudinary.uploader.upload(fileUrl);
+
+                localImagesUrl.push(fileUrl);
+                return { url: uploadRes.secure_url, id: uploadRes.asset_id, public_id: uploadRes.public_id };
+            })
+        );
 
         return imagesUrl;
     } finally {
