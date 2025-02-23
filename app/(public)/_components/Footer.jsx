@@ -8,7 +8,7 @@ export default function Footer() {
                 <ul className="flex gap-3 text-sm justify-center flex-wrap">
                     {navMenu.map((item) => (
                         <li key={item.label}>
-                            <Link href={item.path} prefetch className="w-full hover:underline">
+                            <Link href={item.path} className="w-full hover:underline">
                                 {item.label}
                             </Link>
                         </li>

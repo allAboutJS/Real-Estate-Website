@@ -43,7 +43,6 @@ export default function Nav() {
                         <li onClick={() => setIsMenuOpen(false)} key={item.label}>
                             <Link
                                 href={item.path}
-                                prefetch
                                 className="w-full max-md:hover:bg-zinc-100 md:hover:underline max-md:p-2 block"
                             >
                                 {item.label}

@@ -14,8 +14,8 @@ export default function Login() {
     };
 
     return (
-        <main className="flex justify-center items-center min-h-screen bg-zinc-100 p-4">
-            <div className="max-w-xl w-full p-4 bg-white shadow-md space-y-6">
+        <main className="flex justify-center items-center min-h-screen bg-slate-100 p-4">
+            <div className="max-w-xl w-full p-4 bg-white shadow-md space-y-6 rounded-2xl">
                 <div className="text-center">
                     <h1 className="text-xl font-semibold">Admin Sign In</h1>
                     <p>Sign in to your account securely</p>
@@ -55,7 +55,7 @@ function SubmitButton() {
     return (
         <button
             disabled={pending}
-            className="p-2 bg-black text-white w-full disabled:cursor-not-allowed disabled:opacity-50"
+            className="p-2 bg-blue-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-xl"
         >
             {pending ? "PLEASE WAIT..." : "LOGIN"}
         </button>
