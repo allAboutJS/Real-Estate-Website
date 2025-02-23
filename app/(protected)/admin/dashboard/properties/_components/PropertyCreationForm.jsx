@@ -17,7 +17,7 @@ export default function PropertyCreationForm() {
         register,
         handleSubmit,
         setValue,
-        formState: { errors }
+        formState: { errors, isSubmitting }
     } = useForm({ mode: "all" });
 
     useEffect(() => {
@@ -168,7 +168,12 @@ export default function PropertyCreationForm() {
                 {errors["images"] && <small className="text-red-600">{errors && errors["images"]?.message}</small>}
             </div>
             <div className="mt-4">
-                <button className="px-4 py-2 bg-black text-white w-full rounded-lg">CREATE PROPERTY</button>
+                <button
+                    disabled={isSubmitting}
+                    className="px-4 py-2 bg-black text-white w-full rounded-lg disabled:opacity-80 disabled:cursor-not-allowed"
+                >
+                    {isSubmitting ? "PLEASE WAIT..." : "CREATE PROPERTY"}
+                </button>
             </div>
         </form>
     );
