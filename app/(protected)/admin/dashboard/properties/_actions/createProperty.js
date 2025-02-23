@@ -14,8 +14,7 @@ const createProperty = async (form) => {
 
         await client.query(query, values);
         return { success: true };
-    } catch (error) {
-        console.log(error);
+    } catch {
         return { success: false };
     } finally {
         await client.end();
