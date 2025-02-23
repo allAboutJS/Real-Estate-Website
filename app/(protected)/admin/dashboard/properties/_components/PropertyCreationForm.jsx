@@ -47,32 +47,40 @@ export default function PropertyCreationForm() {
         });
     };
 
-    const parseFormAndSubmit = async (form) => {
-        try {
-            const imagesTextArr = await Promise.all(
-                Array.from(form.images).map(async (file) => {
-                    const base64ImageUrl = await readFileAsDataURL(file);
-                    return base64ImageUrl.replace(/^data:image\/[a-z]+;base64,/, "");
-                })
-            );
+    const parseFormAndSubmit = async (form) =>
+        toast.promise(
+            () =>
+                new Promise(async (resolve, reject) => {
+                    try {
+                        const imagesTextArr = await Promise.all(
+                            Array.from(form.images).map(async (file) => {
+                                const base64ImageUrl = await readFileAsDataURL(file);
+                                return base64ImageUrl.replace(/^data:image\/[a-z]+;base64,/, "");
+                            })
+                        );
 
-            delete form.images;
+                        delete form.images;
 
-            const imagesInfo = await uploadImages(...imagesTextArr);
-            const { success } = await createProperty({
-                ...form,
-                assets: JSON.stringify(imagesInfo),
-                featured_image_url: imagesInfo[0].url
-            });
-            if (success) {
-                toast.success("Property created successfully!");
-                router.refresh();
-            } else toast.error("Property creation failed!");
-        } catch (error) {
-            console.error("Error in parseFormAndSubmit:", error);
-            toast.error("Property creation failed!");
-        }
-    };
+                        const imagesInfo = await uploadImages(...imagesTextArr);
+                        const { success } = await createProperty({
+                            ...form,
+                            assets: JSON.stringify(imagesInfo),
+                            featured_image_url: imagesInfo[0].url
+                        });
+                        if (success) {
+                            resolve();
+                            router.refresh();
+                        } else reject();
+                    } catch {
+                        reject();
+                    }
+                }),
+            {
+                loading: "Uploading property",
+                error: "Property creation failed!",
+                success: "Property created successfully!"
+            }
+        );
 
     return (
         <form onSubmit={handleSubmit(parseFormAndSubmit)}>

@@ -23,6 +23,9 @@ const uploadImages = async (...args) => {
         );
 
         return imagesUrl;
+    } catch (err) {
+        for (let fileUrl of localImagesUrl) await unlink(fileUrl);
+        throw err;
     } finally {
         for (let fileUrl of localImagesUrl) await unlink(fileUrl);
     }

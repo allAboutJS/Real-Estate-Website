@@ -1,11 +1,18 @@
+import getPropertiesMetadata from "@/app/_actions/getPropertiesMetadata";
 import Tabs from "../_components/Tabs";
 import Create from "./_components/Create";
+import { unstable_noStore } from "next/cache";
+import PublishedProperties from "./_components/PublishedProperties";
+import ArchivedProperties from "./_components/ArchivedProperties";
 
 export const metadata = {
     title: "Admin Dashboard - Properties"
 };
 
-export default function Properties() {
+export default async function Properties() {
+    unstable_noStore();
+    const { success, data } = await getPropertiesMetadata();
+
     return (
         <div className="space-y-8">
             <section className="flex justify-between">
@@ -16,19 +23,11 @@ export default function Properties() {
                 data={[
                     {
                         label: "Published",
-                        component: (
-                            <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
-                                There&apos;s nothing here.
-                            </div>
-                        )
+                        component: <PublishedProperties properties={data} success={success} />
                     },
                     {
                         label: "Archived",
-                        component: (
-                            <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
-                                There&apos;s nothing here.
-                            </div>
-                        )
+                        component: <ArchivedProperties properties={data} success={success} />
                     }
                 ]}
             />
