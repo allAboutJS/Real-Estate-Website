@@ -51,7 +51,8 @@ const initTables = async () => {
                 updated_at TIMESTAMP,
                 property_type VARCHAR(10) CHECK (property_type IN ('land', 'house', 'apartment', 'office', 'shop', 'warehouse')) NOT NULL,
                 availability_status VARCHAR(4) CHECK (availability_status IN ('sale', 'rent')) NOT NULL,
-                assets JSON
+                assets JSON,
+                archived BOOLEAN DEFAULT FALSE
             )
         `);
     } catch {
