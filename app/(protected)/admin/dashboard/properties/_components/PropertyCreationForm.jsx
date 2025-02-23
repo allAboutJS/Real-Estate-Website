@@ -7,8 +7,11 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import createProperty from "../_actions/createProperty";
 import uploadImages from "../../_actions/uploadImages";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function PropertyCreationForm() {
+    const router = useRouter();
     const [images, setImages] = useState([]);
     const {
         register,
@@ -56,13 +59,18 @@ export default function PropertyCreationForm() {
             delete form.images;
 
             const imagesInfo = await uploadImages(...imagesTextArr);
-            await createProperty({
+            const { success } = await createProperty({
                 ...form,
-                assets: imagesInfo,
-                featuredImageUrl: imagesInfo[0].url
+                assets: JSON.stringify(imagesInfo),
+                featured_image_url: imagesInfo[0].url
             });
+            if (success) {
+                toast.success("Property created successfully!");
+                router.refresh();
+            } else toast.error("Property creation failed!");
         } catch (error) {
             console.error("Error in parseFormAndSubmit:", error);
+            toast.error("Property creation failed!");
         }
     };
 
@@ -108,7 +116,7 @@ export default function PropertyCreationForm() {
                     name="type"
                     options={[
                         { label: "Landed Properties", value: "land" },
-                        { label: "Houses and Buildings", value: "building" },
+                        { label: "Houses and Buildings", value: "house" },
                         { label: "Warehouse", value: "warehouse" },
                         { label: "Shop", value: "shop" },
                         { label: "Office", value: "office" },
@@ -155,12 +163,12 @@ export default function PropertyCreationForm() {
                     accept="image/*"
                     multiple
                     id="images"
-                    className="mt-1 min-w-0 bg-slate-100 rounded-sm p-2 w-full"
+                    className="mt-1 min-w-0 bg-slate-100 rounded-lg p-2 w-full"
                 />
                 {errors["images"] && <small className="text-red-600">{errors && errors["images"]?.message}</small>}
             </div>
             <div className="mt-4">
-                <button className="px-4 py-2 bg-black text-white w-full">CREATE PROPERTY</button>
+                <button className="px-4 py-2 bg-black text-white w-full rounded-lg">CREATE PROPERTY</button>
             </div>
         </form>
     );

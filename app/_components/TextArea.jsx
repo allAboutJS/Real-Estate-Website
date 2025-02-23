@@ -4,7 +4,7 @@ export default function TextArea({ register, errors, name, label, validations, .
             <label htmlFor={otherProps.id}>{label}</label>
             {register ? (
                 <textarea
-                    className="min-w-0 bg-slate-100 rounded-sm p-2 min-h-20"
+                    className="min-w-0 bg-slate-100 rounded-lg p-2 min-h-20"
                     {...otherProps}
                     {...register(name, validations)}
                 ></textarea>

@@ -9,7 +9,7 @@ export default function Modal({ children, onDismiss, heading, dismissOnOutsideCl
                 onClick={dismissOnOutsideClick ? onDismiss : undefined}
                 className="inset-0 top-0 fixed bg-black bg-opacity-10 backdrop-blur-sm z-50"
             ></div>
-            <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg z-50 w-[90%] max-w-screen-sm h-fit max-h-[90%] overflow-y-auto">
+            <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg z-50 w-[90%] max-w-screen-sm h-fit max-h-[90%] overflow-y-auto rounded-2xl">
                 <div className="relative">
                     <div className="flex bg-white justify-end items-center border-b p-4 sticky top-0 w-full left-0">
                         {heading && (

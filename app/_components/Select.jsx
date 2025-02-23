@@ -104,7 +104,7 @@ export default function Select({ errors, register, name, validations, setValue, 
                 }
                 onKeyDown={handleKeydown}
                 onChange={(e) => dispatch({ type: "set_label_value", payload: e.target.value })}
-                className={`${props.className} w-full min-w-0 bg-slate-100 rounded-sm p-2 text-left`}
+                className={`${props.className} w-full min-w-0 bg-slate-100 rounded-lg p-2 text-left`}
                 {...others}
             >
                 {state.labelValue || "Select an option"}
