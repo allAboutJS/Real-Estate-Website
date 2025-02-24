@@ -13,8 +13,7 @@ const getBlogPostsMetadata = async (limit, omitHidden = false) => {
         const { rows } = limit ? await client.query(`${query} LIMIT $1`, [limit]) : await client.query(query);
 
         return { success: true, data: rows };
-    } catch (e) {
-        console.log(e);
+    } catch {
         return { success: false };
     } finally {
         await client.end();
