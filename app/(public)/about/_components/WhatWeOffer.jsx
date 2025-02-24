@@ -28,14 +28,14 @@ export default function WhatWeOffer() {
     return (
         <section>
             <h2 className="text-center text-3xl">What We Offer</h2>
-            <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-4 max-w-screen-xl mx-auto">
+            <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-2 max-w-screen-xl mx-auto">
                 {offers.map((offer, index) => (
                     <li
-                        className="p-4 flex flex-col justify-center bg-gradient-to-tr from-zinc-500 to-zinc-800 text-white rounded-2xl"
+                        className="p-4 flex flex-col justify-center bg-zinc-200 text-black rounded-lg"
                         key={offer.offer}
                     >
                         <h3 className="text-xl mb-2">{offer.offer}</h3>
-                        <p className="text-white/85">{offer.description}</p>
+                        <p className="text-black/85">{offer.description}</p>
                     </li>
                 ))}
             </ul>
