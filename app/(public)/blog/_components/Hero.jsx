@@ -13,22 +13,25 @@ export default function Hero() {
 
 function SearchBar() {
     return (
-        <form className="max-sm:grid max-sm:grid-cols-1 sm:flex items-end p-4 bg-white text-sm text-zinc-800 gap-4 mt-6 rounded-2xl shadow-lg w-full max-w-lg">
-            <div className="input-field w-full">
-                <Autocomplete placeholder="Select type" options={[]} className="bg-slate-100 rounded-sm p-1" />
+        <form className="max-sm:grid max-sm:grid-cols-1 sm:flex items-end p-4 bg-white text-sm text-zinc-800 gap-2 mt-6 w-full max-w-lg rounded-2xl shadow-lg">
+            <div className="input-field flex-1">
+                <label htmlFor="keyword">Keyword</label>
+                <input className="min-w-0 bg-slate-100 rounded-sm p-1" type="text" placeholder="Enter keyword..." />
             </div>
-            <Filters />
-            <button className="bg-zinc-600 text-white p-1 px-2 rounded-lg">SEARCH</button>
+            <div className="flex justify-center gap-1">
+                <Filters />
+                <button className="text-white bg-blue-600 p-1 px-2 rounded-md text-sm flex-1">SEARCH</button>
+            </div>
         </form>
     );
 }
 
 function Filters() {
     return (
-        <div>
+        <div className="flex-1">
             <button
                 type="button"
-                className="px-2 py-1 border-zinc-600 border flex gap-1 items-center rounded-lg text-zinc-600"
+                className="px-2 py-1 border-blue-600 border flex gap-1 items-center justify-center rounded-lg text-blue-600 w-full"
             >
                 <CgOptions /> Filter
             </button>

@@ -44,6 +44,10 @@
     scroll-behavior: smooth;
 }
 
+input {
+    @apply outline-blue-600 outline-offset-2;
+}
+
 .hero {
     background-image: linear-gradient(rgba(33, 81, 125, 0.5), rgba(0, 0, 0, 0.5)),
         url(/images/hero-real-estate-facts-trends.webp);
