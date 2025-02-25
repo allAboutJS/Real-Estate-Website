@@ -11,7 +11,7 @@ const getBlogPost = async (slug) => {
         const query = "SELECT * FROM blog_posts WHERE slug = $1 LIMIT 1";
         const { rows } = await client.query(query, [slug]);
 
-        return { success: true, data: rows[0] };
+        return { success: rows.length ? true : false, data: rows[0] };
     } catch {
         return { success: false };
     } finally {
