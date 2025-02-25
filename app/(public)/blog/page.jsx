@@ -13,7 +13,7 @@ export default function BlogsPage() {
             <Hero />
             <LatestPosts />
             <AllBlogPosts />
-            <Pagination currentPage={1} limit={7} totalPages={12} />
+            {/* <Pagination currentPage={1} limit={7} totalPages={12} /> */}
         </main>
     );
 }
