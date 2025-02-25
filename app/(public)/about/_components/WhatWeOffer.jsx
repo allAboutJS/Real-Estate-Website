@@ -27,11 +27,11 @@ const offers = [
 export default function WhatWeOffer() {
     return (
         <section>
-            <h2 className="text-center text-3xl">What We Offer</h2>
+            <h2 className="text-center text-3xl text-blue-800">What We Offer</h2>
             <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-2 max-w-screen-xl mx-auto">
                 {offers.map((offer, index) => (
                     <li
-                        className="p-4 flex flex-col justify-center bg-zinc-200 text-black rounded-lg"
+                        className="p-4 flex flex-col justify-center bg-purple-200 text-black rounded-lg"
                         key={offer.offer}
                     >
                         <h3 className="text-xl mb-2">{offer.offer}</h3>

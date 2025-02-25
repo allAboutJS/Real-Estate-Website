@@ -79,7 +79,7 @@ export default function Autocomplete(props) {
 
         dispatch({ type: "set_filtered_options", payload: filteredOptions });
         getValue && getValue(state.value);
-    }, [state, options, getValue]);
+    }, [options, getValue]);
 
     useEffect(() => {
         if (suggestionList.current) {

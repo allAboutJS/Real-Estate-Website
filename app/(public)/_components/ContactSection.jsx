@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm";
 
 export default function ContactSection({ heading }) {
     return (
-        <section className="bg-slate-200 grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-2xl">
+        <section className="bg-purple-200 grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-2xl">
             <Image
                 height={400}
                 width={400}

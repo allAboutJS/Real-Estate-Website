@@ -21,7 +21,7 @@ export default function PublicLayout({ children }) {
     return (
         <>
             <Header />
-            <div className="bg-slate-50">{children}</div>
+            <div className="bg-blue-50">{children}</div>
             <Footer />
         </>
     );

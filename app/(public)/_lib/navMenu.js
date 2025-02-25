@@ -4,7 +4,7 @@ const navMenu = [
         path: "/"
     },
     {
-        label: "About",
+        label: "About Us",
         path: "/about"
     },
     {

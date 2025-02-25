@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { CgPhone, CgMail, CgMenu } from "react-icons/cg";
+import { CgMail, CgMenu } from "react-icons/cg";
 import navMenu from "../_lib/navMenu";
 import { useEffect, useRef, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa6";
 
 export default function Nav() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,7 @@ export default function Nav() {
                 aria-roledescription="Primary navigation"
                 data-open={isMenuOpen}
                 role="navigation"
-                className="max-md:absolute max-md:top-4 max-md:right-4 max-md:bg-white max-md:shadow-lg max-md:scale-0"
+                className="max-md:absolute max-md:top-4 max-md:right-4 max-md:bg-white max-md:shadow-lg max-md:scale-0 max-md:w-56 max-md:rounded-lg"
             >
                 <ul className="flex md:gap-3 text-sm max-sm:flex-col min-w-40">
                     {navMenu.map((item) => (
@@ -55,20 +56,20 @@ export default function Nav() {
                 <ul className="flex gap-3 text-sm items-center">
                     <li>
                         <a
-                            className="flex items-center gap-1 py-1 px-2 bg-zinc-200 rounded-full"
-                            href="tel:+2349072731774"
+                            className="flex items-center gap-1 py-2 px-4 bg-green-600 text-white rounded-md"
+                            href="https://wa.me/2349072731774"
                         >
-                            <CgPhone />
-                            <span className="max-sm:hidden">+234 9072731774</span>
+                            <FaWhatsapp />
+                            <span className="max-sm:hidden">WhatsApp</span>
                         </a>
                     </li>
                     <li>
                         <a
-                            className="flex items-center gap-1 py-1 px-2 bg-zinc-200 rounded-full"
+                            className="flex items-center gap-1 py-2 px-4 bg-gradient-to-br from-blue-600 via-yellow-600 to-red-600 text-white rounded-md"
                             href="mailto:ebubeaguproperties@gmail.com"
                         >
                             <CgMail />
-                            <span className="max-sm:hidden">ebubeaguproperties@gmail.com</span>
+                            <span className="max-sm:hidden">Email</span>
                         </a>
                     </li>
                 </ul>

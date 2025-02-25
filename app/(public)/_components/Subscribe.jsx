@@ -13,7 +13,7 @@ export default function Subscribe() {
                     className="p-2 flex-1 rounded-xl outline-none"
                     placeholder="Enter your email to subscribe..."
                 />
-                <button className="py-2 px-4 bg-zinc-600 text-white rounded-full">SUBSCRIBE</button>
+                <button className="py-2 px-4 bg-blue-600 text-white rounded-full">SUBSCRIBE</button>
             </form>
         </section>
     );

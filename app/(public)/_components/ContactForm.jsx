@@ -92,7 +92,7 @@ export default function ContactForm() {
             />
             <button
                 disabled={isSubmitting}
-                className="p-2 bg-zinc-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-xl"
+                className="p-2 bg-blue-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-md"
             >
                 {isSubmitting ? "PLEASE WAIT..." : "SEND"}
             </button>

@@ -26,11 +26,11 @@ const whyChooseUs = [
 
 export default function WhyChooseUs() {
     return (
-        <section className="bg-slate-200 p-6 rounded-2xl max-w-screen-xl mx-auto">
-            <h2 className="text-center text-3xl">Why Choose Us?</h2>
+        <section className="bg-blue-200 p-6 rounded-2xl max-w-screen-xl mx-auto">
+            <h2 className="text-center text-3xl text-blue-800">Why Choose Us?</h2>
             <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-1">
                 {whyChooseUs.map((reason) => (
-                    <li key={reason.offer} className="bg-slate-50 p-4 border hover:shadow-lg rounded-2xl">
+                    <li key={reason.offer} className="bg-blue-50 p-4 border hover:shadow-lg rounded-2xl">
                         {reason.icon}
                         <div className="clear-both"></div>
                         <h3 className="z-20 text-xl mb-2">{reason.offer}</h3>

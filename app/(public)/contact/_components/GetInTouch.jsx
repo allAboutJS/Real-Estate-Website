@@ -3,7 +3,7 @@ import { CgMail, CgPhone, CgPin, CgStopwatch } from "react-icons/cg";
 export default function GetInTouch() {
     return (
         <section class="max-w-screen-lg mx-auto">
-            <h2 className="text-3xl mb-4">Get in Touch</h2>
+            <h2 className="text-3xl mb-4 text-blue-800">Get in Touch</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-semibold mb-2 flex items-center gap-1">
