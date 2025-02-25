@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Nav from "./Nav";
-import Image from "next/image";
-import { FaHouse } from "react-icons/fa6";
 
 export default function Header() {
     return (
@@ -9,7 +7,7 @@ export default function Header() {
             <div className="flex justify-between max-w-screen-lg m-auto p-4 h-20 items-center">
                 <div>
                     <Link className="flex text-blue-600 text-lg font-bold items-center" href="/">
-                        <img src="/images/logo.png" className="h-16 w-auto block" />
+                        <img src="/images/logo.jpg" className="h-16 w-auto block" />
                     </Link>
                 </div>
                 <Nav />

@@ -12,8 +12,8 @@ const navMenu = [
         path: "/contact"
     },
     {
-        label: "Listings",
-        path: "/listings"
+        label: "Properties",
+        path: "/properties"
     },
     {
         label: "Blog",
