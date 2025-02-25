@@ -19,7 +19,7 @@ export default async function LatestBlogPosts() {
                     ))}
                 </div>
             ) : (
-                <p>Failed to fetch blog posts</p>
+                <p className="text-center text-red-400">Failed to fetch blog posts</p>
             )}
         </section>
     );

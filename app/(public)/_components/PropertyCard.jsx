@@ -1,58 +1,49 @@
 import Image from "next/image";
-import { CgPinBottom } from "react-icons/cg";
+import { FaLocationPin, FaNairaSign, FaQuestion } from "react-icons/fa6";
+import { CgEditBlackPoint, CgEye } from "react-icons/cg";
+import Link from "next/link";
 
-export default function PropertyCard(props) {
-    const {
-        thumbnail_ulr,
-        name,
-        price,
-        location,
-        dimensions,
-        rooms_count,
-        kitchen_count,
-        toilets_count,
-        boys_quarters_count
-    } = props;
-
+export default function PropertyCard({
+    id,
+    featured_image_url,
+    name,
+    price,
+    address,
+    availability_status,
+    property_type
+}) {
     return (
-        <article>
-            <Image width={320} height={240} src={thumbnail_ulr} placeholder="blur" blurDataURL="/" alt={name} />
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <h3>{name}</h3>
-                            <address>
-                                <CgPinBottom /> {location}
-                            </address>
-                        </div>
-                    </div>
-                    <div>{price}</div>
+        <div className="bg-white p-4 rounded-2xl space-y-2 shadow-sm h-fit">
+            <Image
+                className="w-full block aspect-video rounded-lg"
+                width={320}
+                height={240}
+                src={featured_image_url}
+                alt={name}
+            />
+            <div className="space-y-2">
+                <h3 className="text-lg font-semibold">{name}</h3>
+                <div className="text-sm text-zinc-800 grid grid-cols-2 gap-2 items-end">
+                    <p className="capitalize">
+                        <FaLocationPin className="text-blue-600 inline" /> Address: <b>{address}</b>
+                    </p>
+                    <p>
+                        <FaNairaSign className="text-green-600 inline" /> Price: <b>{price.toLocaleString()}</b>
+                    </p>
+                    <p className="capitalize">
+                        <FaQuestion className="text-yellow-600 inline" /> For: <b>{availability_status}</b>
+                    </p>
+                    <p className="capitalize">
+                        <CgEditBlackPoint className="text-red-600 inline" /> Type: <b>{property_type}</b>
+                    </p>
                 </div>
-                <div>
-                    {dimensions && <span>{dimensions}</span>}
-                    {rooms_count && (
-                        <span>
-                            {rooms_count} Room{rooms_count > 1 && "s"}
-                        </span>
-                    )}
-                    {kitchen_count && (
-                        <span>
-                            {kitchen_count} Kitchen{rooms_count > 1 && "s"}
-                        </span>
-                    )}
-                    {toilets_count && (
-                        <span>
-                            {toilets_count} Toilet{toilets_count > 1 && "s"}
-                        </span>
-                    )}
-                    {boys_quarters_count && (
-                        <span>
-                            {boys_quarters_count} Boys Quarter{boys_quarters_count > 1 && "s"}
-                        </span>
-                    )}
-                </div>
+                <Link
+                    className="flex items-center justify-center w-full bg-blue-600 text-white p-2 rounded-lg gap-2"
+                    href={`/properties/${id}`}
+                >
+                    <CgEye /> View
+                </Link>
             </div>
-        </article>
+        </div>
     );
 }

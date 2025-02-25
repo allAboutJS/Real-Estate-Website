@@ -15,7 +15,7 @@ export default function BlogPostCard(props) {
                 <p className="text-zinc-800 text-xs">
                     <i>Posted on 3rd January, 2024.</i>
                 </p>
-                <h3 className="text-lg">{props.title}</h3>
+                <h3 className="text-lg font-semibold">{props.title}</h3>
                 <p className="text-sm line-clamp-3">{props.description}</p>
             </div>
         </Link>
