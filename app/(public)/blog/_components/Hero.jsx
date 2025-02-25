@@ -1,5 +1,4 @@
-import Autocomplete from "@/app/_components/Autocomplete";
-import { CgOptions } from "react-icons/cg";
+import Input from "@/app/_components/Input";
 
 export default function Hero() {
     return (
@@ -13,28 +12,13 @@ export default function Hero() {
 
 function SearchBar() {
     return (
-        <form className="max-sm:grid max-sm:grid-cols-1 sm:flex items-end p-4 bg-white text-sm text-zinc-800 gap-2 mt-6 w-full max-w-lg rounded-2xl shadow-lg">
-            <div className="input-field flex-1">
-                <label htmlFor="keyword">Keyword</label>
-                <input className="min-w-0 bg-slate-100 rounded-sm p-1" type="text" placeholder="Enter keyword..." />
-            </div>
-            <div className="flex justify-center gap-1">
-                <Filters />
-                <button className="text-white bg-blue-600 p-1 px-2 rounded-md text-sm flex-1">SEARCH</button>
+        <form className="p-4 bg-white text-sm text-zinc-800 gap-2 mt-6 rounded-2xl shadow-lg w-full max-w-xl">
+            <div className="flex gap-1 items-end">
+                <div className="flex-1">
+                    <Input label="Keyword" placeholder="Seach blog..." />
+                </div>
+                <button className="text-white bg-blue-600 py-2 px-4 rounded-md text-sm">SEARCH</button>
             </div>
         </form>
-    );
-}
-
-function Filters() {
-    return (
-        <div className="flex-1">
-            <button
-                type="button"
-                className="px-2 py-1 border-blue-600 border flex gap-1 items-center justify-center rounded-lg text-blue-600 w-full"
-            >
-                <CgOptions /> Filter
-            </button>
-        </div>
     );
 }

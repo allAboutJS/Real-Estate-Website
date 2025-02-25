@@ -16,7 +16,7 @@ export default function BlogPostCard(props) {
                     <i>Posted on 3rd January, 2024.</i>
                 </p>
                 <h3 className="text-lg font-semibold">{props.title}</h3>
-                <p className="text-sm line-clamp-3">{props.description}</p>
+                <p className="text-sm line-clamp-3">{props.summary}...</p>
             </div>
         </Link>
     );

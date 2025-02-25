@@ -2,7 +2,7 @@ import getBlogPost from "@/app/_actions/getBlogPost";
 import BlogBody from "./_components/BlogBody";
 
 export const generateMetadata = async ({ params }) => {
-    const { slug } = params;
+    const { slug } = await params;
     const { data } = await getBlogPost(slug);
 
     return {
