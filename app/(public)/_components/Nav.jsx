@@ -37,14 +37,14 @@ export default function Nav() {
                 aria-roledescription="Primary navigation"
                 data-open={isMenuOpen}
                 role="navigation"
-                className="max-md:absolute max-md:top-4 max-md:right-4 max-md:bg-white max-md:shadow-lg max-md:scale-0 max-md:w-56 max-md:rounded-lg"
+                className="max-md:absolute max-md:top-4 max-md:right-4 max-md:bg-white max-md:shadow-lg max-md:scale-0 max-md:w-56 max-md:rounded-lg overflow-hidden"
             >
-                <ul className="flex md:gap-3 text-sm max-sm:flex-col min-w-40">
+                <ul className="flex md:gap-3 text-sm max-md:flex-col min-w-40">
                     {navMenu.map((item) => (
                         <li onClick={() => setIsMenuOpen(false)} key={item.label}>
                             <Link
                                 href={item.path}
-                                className="w-full max-md:hover:bg-zinc-100 md:hover:underline max-md:p-2 block"
+                                className="w-full max-md:hover:bg-blue-100 md:hover:underline max-md:p-2 block"
                             >
                                 {item.label}
                             </Link>
