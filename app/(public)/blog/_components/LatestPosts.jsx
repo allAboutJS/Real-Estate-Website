@@ -1,7 +1,9 @@
 import getBlogPostsMetadata from "@/app/_actions/getBlogPostsMetadata";
 import BlogPostCard from "../../_components/BlogPostCard";
+import { unstable_noStore } from "next/cache";
 
 export default async function LatestPosts() {
+    unstable_noStore();
     const { success, data } = await getBlogPostsMetadata(4);
 
     return (
@@ -13,7 +15,7 @@ export default async function LatestPosts() {
                         <BlogPostCard {...data[0]} />
                         <div className="gap-4 grid grid-cols-1 sm:grid-cols-2">
                             {data.slice(1).map((post) => (
-                                <BlogPostCard {...post} />
+                                <BlogPostCard key={post.id} {...post} />
                             ))}
                         </div>
                     </>
