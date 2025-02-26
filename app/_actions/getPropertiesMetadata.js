@@ -5,20 +5,24 @@ const getPropertiesMetadata = async (limit, omitArchived = false) => {
     try {
         await client.connect();
 
-        let query;
-        if (omitArchived) {
-            query =
-                limit && Number.isInteger(limit)
-                    ? `SELECT id, name, property_type, address, availability_status, price, featured_image_url, archived FROM properties WHERE archived = false LIMIT ${limit}`
-                    : "SELECT id, name, property_type, address, availability_status, price, featured_image_url, archived FROM properties WHERE archived = false";
-        } else {
-            query =
-                limit && Number.isInteger(limit)
-                    ? `SELECT id, name, property_type, address, availability_status, price, featured_image_url, archived FROM properties LIMIT ${limit}`
-                    : "SELECT id, name, property_type, address, availability_status, price, featured_image_url, archived FROM properties";
-        }
-        const { rows } = await client.query(query);
+        let query = `
+            SELECT id, name, property_type, address, availability_status, price, featured_image_url, archived 
+            FROM properties
+        `;
 
+        if (omitArchived) {
+            query += " WHERE archived = false";
+        }
+
+        if (limit && Number.isInteger(limit)) {
+            query += " LIMIT $1";
+            const { rows } = await client.query(query, [limit]);
+            return { success: true, data: rows };
+        }
+
+        query += "ORDER BY created_at DESC";
+
+        const { rows } = await client.query(query);
         return { success: true, data: rows };
     } catch {
         return { success: false };

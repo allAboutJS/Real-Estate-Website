@@ -12,10 +12,13 @@ export default function Hero() {
 
 function SearchBar() {
     return (
-        <form className="p-4 bg-white text-sm text-zinc-800 gap-2 mt-6 rounded-2xl shadow-lg w-full max-w-xl">
+        <form
+            action="/properties/search"
+            className="p-4 bg-white text-sm text-zinc-800 gap-2 mt-6 rounded-2xl shadow-lg w-full max-w-xl"
+        >
             <div className="flex gap-1 items-end">
                 <div className="flex-1">
-                    <Input label="Keyword" placeholder="Seach properties..." />
+                    <Input label="Keyword" name="query" placeholder="Seach properties..." />
                 </div>
                 <button className="text-white bg-blue-600 py-2 px-4 rounded-md text-sm">SEARCH</button>
             </div>

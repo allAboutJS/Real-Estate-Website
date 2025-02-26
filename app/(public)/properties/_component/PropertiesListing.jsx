@@ -13,7 +13,7 @@ export default async function PropertiesListing() {
                     ))}
                 </div>
             ) : (
-                <p className="text-center text-red-400">Failed to fetch blog posts</p>
+                <p className="text-center text-red-400">Failed to fetch properties</p>
             )}
         </section>
     );
