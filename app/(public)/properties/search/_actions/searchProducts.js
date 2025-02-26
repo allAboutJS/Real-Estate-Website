@@ -25,7 +25,6 @@ const searchProducts = async (text, limit, omitArchived = false) => {
         query += " ORDER BY created_at DESC";
 
         const { rows } = await client.query(query, queryParams);
-        console.log(rows);
         return { success: true, data: rows };
     } catch {
         return { success: false };
