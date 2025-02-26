@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { CgEditBlackPoint, CgEye } from "react-icons/cg";
 import Modal from "../../_components/Modal";
-import Image from "next/image";
 import { FaLocationPin, FaNairaSign, FaQuestion, FaWhatsapp } from "react-icons/fa6";
 import ImageCarousel from "@/app/_components/ImageCarousel";
 

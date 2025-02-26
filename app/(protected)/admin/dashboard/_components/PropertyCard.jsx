@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BiEdit } from "react-icons/bi";
 import View from "../(dashboard)/_components/View";
+import Edit from "../(dashboard)/_components/Edit";
 
 export default function PropertyCard(props) {
     const { name, property_type, address, availability_status, price, featured_image_url } = props;
@@ -34,9 +35,7 @@ export default function PropertyCard(props) {
             </div>
             <div className="grid text-sm font-semibold gap-1 p-1 grid-cols-2">
                 <View {...props} />
-                <button className="hover:bg-zinc-200 bg-zinc-100 flex justify-center items-center gap-1 p-2 rounded-lg">
-                    Edit <BiEdit />
-                </button>
+                <Edit {...props} />
             </div>
         </div>
     );

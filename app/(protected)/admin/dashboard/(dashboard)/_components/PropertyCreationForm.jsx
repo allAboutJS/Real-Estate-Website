@@ -9,10 +9,11 @@ import createProperty from "../_actions/createProperty";
 import uploadImages from "../../_actions/uploadImages";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import deleteAssets from "../../_actions/deleteAssets";
 
-export default function PropertyCreationForm() {
+export default function PropertyCreationForm({ defaultValues, isEditting }) {
     const router = useRouter();
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState(defaultValues?.assets?.map((asset) => asset.url) || []);
     const {
         register,
         handleSubmit,
@@ -76,15 +77,60 @@ export default function PropertyCreationForm() {
                     }
                 }),
             {
-                loading: "Uploading property",
+                loading: "Uploading property...",
                 error: "Property creation failed!",
                 success: "Property created successfully!"
             }
         );
 
+    const handleUpdate = async (form) =>
+        toast.promise(
+            () =>
+                new Promise(async (resolve, reject) => {
+                    try {
+                        if (form.images.length) {
+                            const imagesTextArr = await Promise.all(
+                                Array.from(form.images).map(async (file) => {
+                                    const base64ImageUrl = await readFileAsDataURL(file);
+                                    return base64ImageUrl.replace(/^data:image\/[a-z]+;base64,/, "");
+                                })
+                            );
+                            const imagesInfo = await uploadImages(...imagesTextArr);
+
+                            await deleteAssets(...defaultValues?.assets);
+                            form.images = imagesInfo;
+                        } else {
+                            form.images = defaultValues?.assets;
+                        }
+
+                        const { success } = await createProperty(
+                            {
+                                ...form,
+                                assets: JSON.stringify(form.images),
+                                featured_image_url: form.images[0].url,
+                                id: defaultValues?.id
+                            },
+                            true
+                        );
+                        if (success) {
+                            resolve();
+                            router.refresh();
+                        } else reject();
+                    } catch {
+                        reject();
+                    }
+                }),
+            {
+                loading: "Updating property...",
+                error: "Property update failed!",
+                success: "Property updated successfully!"
+            }
+        );
+
     return (
-        <form onSubmit={handleSubmit(parseFormAndSubmit)}>
+        <form onSubmit={handleSubmit(isEditting ? handleUpdate : parseFormAndSubmit)} className="font-normal">
             <Input
+                defaultValue={defaultValues?.name}
                 register={register}
                 errors={errors}
                 required
@@ -95,6 +141,7 @@ export default function PropertyCreationForm() {
             />
             <div className="grid grid-cols-2 gap-4 mt-4">
                 <Input
+                    defaultValue={defaultValues?.address}
                     register={register}
                     errors={errors}
                     required
@@ -105,6 +152,7 @@ export default function PropertyCreationForm() {
                 />
                 <Input
                     register={register}
+                    defaultValue={defaultValues?.price}
                     errors={errors}
                     required
                     name="price"
@@ -115,6 +163,7 @@ export default function PropertyCreationForm() {
             </div>
             <div className="grid grid-cols-2 gap-4 mt-4">
                 <Select
+                    defaultValue={defaultValues?.property_type}
                     register={register}
                     errors={errors}
                     validations={{ required: { value: true, message: "Select property type" } }}
@@ -132,6 +181,7 @@ export default function PropertyCreationForm() {
                     ]}
                 />
                 <Select
+                    defaultValue={defaultValues?.availability_status}
                     register={register}
                     errors={errors}
                     validations={{ required: { value: true, message: "Select property availability status" } }}
@@ -147,6 +197,7 @@ export default function PropertyCreationForm() {
             </div>
             <div className="mt-4">
                 <TextArea
+                    defaultValue={defaultValues?.description}
                     register={register}
                     errors={errors}
                     validations={{ required: { value: true, message: "Property description is required" } }}
@@ -166,7 +217,9 @@ export default function PropertyCreationForm() {
                     Images
                 </label>
                 <input
-                    {...register("images", { required: { value: true, message: "Please select an image" } })}
+                    {...register("images", {
+                        required: { value: defaultValues?.assets ? false : true, message: "Please select an image" }
+                    })}
                     type="file"
                     accept="image/*"
                     multiple
@@ -180,7 +233,7 @@ export default function PropertyCreationForm() {
                     disabled={isSubmitting}
                     className="px-4 py-2 bg-black text-white w-full rounded-lg disabled:opacity-80 disabled:cursor-not-allowed"
                 >
-                    {isSubmitting ? "PLEASE WAIT..." : "CREATE PROPERTY"}
+                    {isSubmitting ? "PLEASE WAIT..." : isEditting ? "SUBMIT" : "CREATE PROPERTY"}
                 </button>
             </div>
         </form>

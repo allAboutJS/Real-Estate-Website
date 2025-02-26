@@ -5,13 +5,12 @@ import { useEffect, useId, useReducer, useRef } from "react";
 export default function Select({ errors, register, name, validations, setValue, ...props }) {
     const id = useId();
     const suggestionList = useRef(null);
-    const inputRef = useRef(null);
     const { options, className, getValue, ...others } = props;
     const initialState = {
         showOptions: false,
         activeOptionIndex: -1,
-        value: "",
-        labelValue: ""
+        value: props.defaultValue ? options.find((option) => option.value === props.defaultValue).value : "",
+        labelValue: props.defaultValue ? options.find((option) => option.value === props.defaultValue).label : ""
     };
 
     const reducer = (state, action) => {
