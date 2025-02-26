@@ -43,6 +43,20 @@ export default function View(props) {
                                     <b>Description:</b> <br /> {props.description}
                                 </p>
                             </div>
+                            <div className="flex gap-2">
+                                {props.archived ? (
+                                    <button className="px-4 p-2 rounded-lg flex-1 text-center bg-green-600 text-white">
+                                        UNARCHIVE
+                                    </button>
+                                ) : (
+                                    <button className="px-4 p-2 rounded-lg flex-1 text-center bg-yellow-600 text-white">
+                                        ARCHIVE
+                                    </button>
+                                )}
+                                <button className="px-4 p-2 rounded-lg flex-1 text-center bg-red-600 text-white">
+                                    DELETE
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </Modal>
