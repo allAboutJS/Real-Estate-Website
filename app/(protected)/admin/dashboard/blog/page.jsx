@@ -20,7 +20,7 @@ export default async function Blog() {
             <section className="flex justify-between">
                 <h1 className="text-3xl font-bold">Blog Posts</h1>
                 <Link
-                    className="bg-zinc-600 text-white py-2 px-4 justify-center flex items-center gap-2 rounded-lg"
+                    className="bg-blue-600 text-white py-2 px-4 justify-center flex items-center gap-2 rounded-lg"
                     href="./blog/create"
                 >
                     <CgMathPlus /> CREATE

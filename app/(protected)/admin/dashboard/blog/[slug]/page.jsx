@@ -21,7 +21,7 @@ export default async function SingleBlogPost({ params }) {
                     <div className="text-sm">
                         <ActionButtons slug={slug} isDraft={data.is_draft} archived={data.archived} />
                     </div>
-                    <article className="bg-white shadow p-4 space-y-3 max-w-screen-md m-auto blog-container">
+                    <article className="bg-white shadow p-4 space-y-3 max-w-screen-md m-auto blog-container rounded-tl-lg rounded-b-lg">
                         <h1 className="text-3xl font-bold capitalize">{data.title}</h1>
                         <div
                             className="space-y-2 [&_*]:break-words"

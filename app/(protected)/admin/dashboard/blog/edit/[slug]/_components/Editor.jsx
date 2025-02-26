@@ -101,7 +101,7 @@ export default function Editor(props) {
             <div className="flex justify-end gap-2">
                 <button
                     ref={updateButtonRef}
-                    className="text-sm font-semibold px-4 py-2 rounded-sm bg-zinc-800 text-white disabled:cursor-not-allowed disabled:opacity-50"
+                    className="text-sm font-semibold px-4 py-2 rounded-sm bg-blue-800 text-white disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     UPDATE
                 </button>

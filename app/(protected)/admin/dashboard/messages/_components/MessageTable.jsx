@@ -16,7 +16,7 @@ export default function MessageTable({ data }) {
         <div className="overflow-auto max-w-full show-scrollbar">
             <table className="min-w-full">
                 <thead>
-                    <tr className="bg-gray-200">
+                    <tr className="bg-blue-200 text-blue-950">
                         <th className="p-4">Fullname</th>
                         <th className="p-4">Email</th>
                         <th className="p-4">Phone</th>
@@ -47,13 +47,13 @@ export default function MessageTable({ data }) {
                                 <div className="flex gap-1 font-semibold">
                                     <button
                                         onClick={() => (setCurrentlyViewedMessage(message), setIsModalOpen(true))}
-                                        className="px-2 py-1 bg-black text-white"
+                                        className="px-2 py-1 bg-black text-white rounded-md"
                                     >
                                         View
                                     </button>
                                     <button
                                         onClick={() => handleMessageDeletion(message.id, router)}
-                                        className="px-2 py-1 bg-red-600 text-white"
+                                        className="px-2 py-1 bg-red-600 text-white rounded-md"
                                     >
                                         Delete
                                     </button>
@@ -75,7 +75,7 @@ export default function MessageTable({ data }) {
                     {currentlyViewedMessage && (
                         <div>
                             <div className="space-y-3">
-                                <div className="bg-zinc-300 text-zinc-700 p-4 text-sm text-center font-semibold">
+                                <div className="bg-yellow-300 text-yellow-700 p-4 text-sm text-center font-semibold">
                                     Please note that some numbers may not be registered on WhatsApp, and some people may
                                     provide fake emails.
                                 </div>
@@ -106,14 +106,14 @@ export default function MessageTable({ data }) {
                                             /^[0+]/,
                                             ""
                                         )}`}
-                                        className="bg-green-600 text-white p-2 flex items-center gap-2 justify-center"
+                                        className="bg-green-600 text-white p-2 flex items-center gap-2 justify-center rounded-lg"
                                     >
                                         <FaWhatsapp /> Chat on WhatsApp
                                     </a>
                                     <a
                                         target="_blank"
                                         href={`tel:${currentlyViewedMessage.phone_number}`}
-                                        className="bg-zinc-600 text-white p-2 flex items-center gap-2 justify-center"
+                                        className="bg-zinc-600 text-white p-2 flex items-center gap-2 justify-center rounded-lg"
                                     >
                                         <FaPhone /> Dial the number
                                     </a>

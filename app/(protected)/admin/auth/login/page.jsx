@@ -4,6 +4,7 @@ import { useFormStatus } from "react-dom";
 import login from "./_actions/login";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Login() {
     const router = useRouter();
@@ -14,8 +15,11 @@ export default function Login() {
     };
 
     return (
-        <main className="flex justify-center items-center min-h-screen bg-slate-100 p-4">
+        <main className="flex justify-center items-center min-h-screen bg-blue-50 p-4">
             <div className="max-w-xl w-full p-4 bg-white shadow-md space-y-6 rounded-2xl">
+                <div>
+                    <Image src="/images/logo.jpg" height={80} width={80} alt="" className="block mx-auto" />
+                </div>
                 <div className="text-center">
                     <h1 className="text-xl font-semibold">Admin Sign In</h1>
                     <p>Sign in to your account securely</p>
@@ -24,7 +28,7 @@ export default function Login() {
                     <div className="input-field">
                         <label htmlFor="email">Email</label>
                         <input
-                            className="min-w-0 bg-slate-100 rounded-sm p-1"
+                            className="min-w-0 bg-slate-100 rounded-md p-2"
                             type="email"
                             placeholder="mail@provider.com"
                             id="email"
@@ -35,7 +39,7 @@ export default function Login() {
                     <div className="input-field">
                         <label htmlFor="email">Password</label>
                         <input
-                            className="min-w-0 bg-slate-100 rounded-sm p-1"
+                            className="min-w-0 bg-slate-100 rounded-md p-2"
                             type="password"
                             placeholder="P@ssw0rd"
                             id="password"
@@ -55,7 +59,7 @@ function SubmitButton() {
     return (
         <button
             disabled={pending}
-            className="p-2 bg-zinc-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-xl"
+            className="p-2 bg-blue-600 text-white w-full disabled:cursor-not-allowed disabled:opacity-50 rounded-lg"
         >
             {pending ? "PLEASE WAIT..." : "LOGIN"}
         </button>

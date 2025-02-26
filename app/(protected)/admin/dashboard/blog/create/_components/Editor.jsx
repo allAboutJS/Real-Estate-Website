@@ -102,13 +102,13 @@ export default function Editor() {
             <div className="flex justify-end gap-2">
                 <button
                     ref={publishButtonRef}
-                    className="text-sm font-semibold px-4 py-2 rounded-sm bg-zinc-800 text-white disabled:cursor-not-allowed disabled:opacity-50"
+                    className="text-sm font-semibold px-4 py-2 rounded-sm bg-blue-800 text-white disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     PUBLISH
                 </button>
                 <button
                     ref={draftButtonRef}
-                    className="text-sm font-semibold px-4 py-2 rounded-sm bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="text-sm font-semibold px-4 py-2 rounded-sm bg-blue-200 text-blue-950 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     SAVE AS DRAFT
                 </button>
