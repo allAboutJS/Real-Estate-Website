@@ -7,19 +7,19 @@ export default function Testimonials() {
     const testimonialsContainer = useRef(null);
     const testimonials = [
         {
-            testifier: "John Doe",
+            testifier: "Onah Victor",
             testimony:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident non illo rem numquam nesciunt dolore, excepturi error et temporibus natus."
+                "Ebubeagu Properties made my dream of owning a home a reality. Their professionalism and dedication to client satisfaction are unmatched. I highly recommend them to anyone looking for a seamless property acquisition experience."
         },
         {
-            testifier: "Janet Dawson",
+            testifier: "Somto Ani",
             testimony:
-                "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda nulla repellendus quia voluptas debitis culpa pariatur impedit officiis nisi saepe."
+                "Finding a reliable real estate company can be challenging, but Ebubeagu Properties exceeded my expectations. They guided me through every step of purchasing my first investment property, ensuring transparency and a smooth transaction."
         },
         {
-            testifier: "John Doe",
+            testifier: "Okonkwo Rita",
             testimony:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident non illo rem numquam nesciunt dolore, excepturi error et temporibus natus."
+                "I was impressed with how quickly Ebubeagu Properties helped me secure a perfect home within my budget. Their team is friendly, knowledgeable, and genuinely cares about their clients' needs. I'm grateful for their exceptional service!"
         }
     ];
 

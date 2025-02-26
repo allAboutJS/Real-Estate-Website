@@ -14,13 +14,13 @@ const getPropertiesMetadata = async (limit, omitArchived = false) => {
             query += " WHERE archived = false";
         }
 
+        query += " ORDER BY created_at DESC";
+
         if (limit && Number.isInteger(limit)) {
             query += " LIMIT $1";
             const { rows } = await client.query(query, [limit]);
             return { success: true, data: rows };
         }
-
-        query += " ORDER BY created_at DESC";
 
         const { rows } = await client.query(query);
         return { success: true, data: rows };

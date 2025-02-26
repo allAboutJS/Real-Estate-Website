@@ -16,13 +16,13 @@ const getBlogPostsMetadata = async (limit, omitHidden = false) => {
             query += " WHERE is_draft = false AND archived = false";
         }
 
+        query += " ORDER BY created_at DESC";
+
         if (limit && Number.isInteger(limit)) {
             query += " LIMIT $1";
             const { rows } = await client.query(query, [limit]);
             return { success: true, data: rows };
         }
-
-        query += " ORDER BY created_at DESC";
 
         const { rows } = await client.query(query);
         return { success: true, data: rows };
