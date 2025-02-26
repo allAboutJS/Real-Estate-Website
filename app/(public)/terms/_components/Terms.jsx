@@ -8,9 +8,9 @@ export default function Terms() {
 
             <h2>1. Acceptance of Terms</h2>
             <p>
-                By accessing and using <strong>www.ebubeaguproperties.com</strong> (the "Website"), you agree to comply
-                with and be bound by these Terms of Use. If you do not agree with any part of these terms, you must not
-                use this Website.
+                By accessing and using <strong>www.ebubeaguproperties.com</strong> (the &quot;Website&quot;), you agree
+                to comply with and be bound by these Terms of Use. If you do not agree with any part of these terms, you
+                must not use this Website.
             </p>
 
             <h2>2. Use of the Website</h2>
@@ -42,8 +42,8 @@ export default function Terms() {
 
             <h2>5. Disclaimers</h2>
             <p>
-                The Website is provided on an "as is" basis. We do not guarantee the accuracy, completeness, or
-                reliability of any property listings or other information on the Website.
+                The Website is provided on an &quot;as is&quot; basis. We do not guarantee the accuracy, completeness,
+                or reliability of any property listings or other information on the Website.
             </p>
 
             <h2>6. Limitation of Liability</h2>
