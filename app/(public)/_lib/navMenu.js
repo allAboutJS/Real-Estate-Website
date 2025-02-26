@@ -18,6 +18,14 @@ const navMenu = [
     {
         label: "Blog",
         path: "/blog"
+    },
+    {
+        label: "Privacy Policy",
+        path: "/privacy"
+    },
+    {
+        label: "Terms of Use",
+        path: "/terms"
     }
 ];
 
