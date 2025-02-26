@@ -1,7 +1,6 @@
-import Hero from "../../_components/Hero";
-import PropertyCard from "../../_components/PropertyCard";
-import PropertiesListing from "../_component/PropertiesListing";
-import searchProducts from "./_actions/searchProducts";
+import BlogPostCard from "../../_components/BlogPostCard";
+import Hero from "../_components/Hero";
+import searchBlogPosts from "./_actions/searchBlogPosts";
 
 export const generateMetadata = async ({ searchParams }) => {
     const { query } = await searchParams;
@@ -19,7 +18,7 @@ export const generateMetadata = async ({ searchParams }) => {
 
 export default async function Search({ searchParams }) {
     const { query } = await searchParams;
-    const { data, success } = await searchProducts(query, undefined, true);
+    const { data, success } = await searchBlogPosts(query, undefined);
 
     return (
         <main className="p-4 space-y-16">
@@ -31,7 +30,7 @@ export default async function Search({ searchParams }) {
                         data.length ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 max-w-screen-xl mx-auto">
                                 {data.map((post) => (
-                                    <PropertyCard key={post.id} {...post} />
+                                    <BlogPostCard key={post.slug} {...post} />
                                 ))}
                             </div>
                         ) : (
