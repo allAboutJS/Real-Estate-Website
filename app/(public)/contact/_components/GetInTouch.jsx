@@ -10,17 +10,16 @@ export default function GetInTouch() {
                         <CgPin /> Visit Us
                     </h3>
                     <p>
-                        123 Real Estate Avenue, Suite 456
+                        111 Chime Avenue,
                         <br />
-                        City, State, ZIP
+                        New Haven, Enugu.
                     </p>
 
                     <h3 className="text-xl font-semibold mt-6 mb-2 flex items-center gap-1">
                         <CgStopwatch /> Office Hours
                     </h3>
                     <ul>
-                        <li>Monday to Friday: 9:00 AM – 6:00 PM</li>
-                        <li>Saturday: 10:00 AM – 4:00 PM</li>
+                        <li>Monday to Saturdy: 9 AM - 5 PM</li>
                         <li>Sunday: Closed</li>
                     </ul>
                 </div>
@@ -29,14 +28,25 @@ export default function GetInTouch() {
                     <h3 className="text-xl font-semibold mb-2 flex items-center gap-1">
                         <CgPhone /> Call Us
                     </h3>
-                    <p>Office Phone: (123) 456-7890</p>
-                    <p>Mobile/WhatsApp: (987) 654-3210</p>
+                    <p>
+                        Office Phone: <a href="tel:+2349072731774">09072731774</a>
+                    </p>
+                    <p>
+                        Mobile/WhatsApp:{" "}
+                        <a href="https://wa.me/2348160624320" target="_blank" rel="noopener noreferrer">
+                            08160624320
+                        </a>
+                    </p>
 
                     <h3 className="text-xl font-semibold mt-6 mb-2 flex items-center gap-1">
                         <CgMail /> Email Us
                     </h3>
-                    <p>General Inquiries: info@realestate.com</p>
-                    <p>Sales Support: sales@realestate.com</p>
+                    <p>
+                        General Inquiries: <a href="mailto:madukaife123@gm.com ">madukaife123@gm.com </a>
+                    </p>
+                    <p>
+                        Office email: <a href="mailto:ebubeaguproperties@gmail.com"> ebubeaguproperties@gmail.com</a>
+                    </p>
                 </div>
             </div>
         </section>
