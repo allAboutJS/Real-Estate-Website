@@ -1,5 +1,6 @@
 "use client";
 
+import ImageCarousel from "@/app/_components/ImageCarousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CgEditBlackPoint } from "react-icons/cg";
@@ -11,19 +12,7 @@ export default function Property({ success, data }) {
     if (!success) return router.replace("/properties"), null;
     return (
         <div className="max-w-screen-md mx-auto bg-white p-6 space-y-6">
-            <div className="snap-x snap-mandatory max-w-full overflow-auto flex h-max items-center">
-                {data.assets.map((asset) => (
-                    <div key={asset.url} className="snap-always snap-end flex-1 min-w-full h-fit">
-                        <Image
-                            width={800}
-                            height={600}
-                            src={asset.url}
-                            alt={data.name}
-                            className="w-full h-auto rounded-lg"
-                        />
-                    </div>
-                ))}
-            </div>
+            <ImageCarousel assets={data.assets} />
             <div className="text-zinc-800 space-y-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-end">
                     <p className="capitalize">

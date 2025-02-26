@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import { BiEdit } from "react-icons/bi";
-import { CgEye } from "react-icons/cg";
+import View from "../(dashboard)/_components/View";
 
-export default function PropertyCard({ name, property_type, address, availability_status, price, featured_image_url }) {
+export default function PropertyCard(props) {
+    const { name, property_type, address, availability_status, price, featured_image_url } = props;
     return (
         <div className="bg-white shadow flex flex-col p-2 rounded-xl gap-2">
             <Image
@@ -33,9 +33,7 @@ export default function PropertyCard({ name, property_type, address, availabilit
                 </p>
             </div>
             <div className="grid text-sm font-semibold gap-1 p-1 grid-cols-2">
-                <button className="hover:bg-zinc-200 bg-zinc-100 flex justify-center items-center gap-1 p-2 rounded-lg">
-                    View <CgEye />
-                </button>
+                <View {...props} />
                 <button className="hover:bg-zinc-200 bg-zinc-100 flex justify-center items-center gap-1 p-2 rounded-lg">
                     Edit <BiEdit />
                 </button>

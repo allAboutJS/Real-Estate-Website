@@ -1,9 +1,9 @@
-import getPropertiesMetadata from "@/app/_actions/getPropertiesMetadata";
 import Tabs from "../_components/Tabs";
 import Create from "./_components/Create";
 import { unstable_noStore } from "next/cache";
 import PublishedProperties from "./_components/PublishedProperties";
 import ArchivedProperties from "./_components/ArchivedProperties";
+import getPropertiesMetadata from "../_actions/getPropertiesMetadata";
 
 export const metadata = {
     title: "Admin Dashboard - Properties"
