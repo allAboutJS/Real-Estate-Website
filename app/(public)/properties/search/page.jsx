@@ -28,11 +28,15 @@ export default async function Search({ searchParams }) {
                 <h3 className="capitalize text-xl font-semibold">Showing Search Results For: {query}</h3>
                 <section>
                     {success ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 max-w-screen-xl mx-auto">
-                            {data.map((post) => (
-                                <PropertyCard key={post.id} {...post} />
-                            ))}
-                        </div>
+                        data.length ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 max-w-screen-xl mx-auto">
+                                {data.map((post) => (
+                                    <PropertyCard key={post.id} {...post} />
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-center text-zinc-800">No results were found for this search</p>
+                        )
                     ) : (
                         <p className="text-center text-red-400">Failed to fetch properties</p>
                     )}

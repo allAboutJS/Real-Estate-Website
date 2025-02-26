@@ -22,7 +22,7 @@ const getBlogPostsMetadata = async (limit, omitHidden = false) => {
             return { success: true, data: rows };
         }
 
-        query += "ORDER BY created_at DESC";
+        query += " ORDER BY created_at DESC";
 
         const { rows } = await client.query(query);
         return { success: true, data: rows };

@@ -13,9 +13,9 @@ export default function PropertyCard({
     property_type
 }) {
     return (
-        <div className="bg-white p-4 rounded-2xl space-y-2 shadow-sm h-fit">
+        <div className="bg-white p-4 rounded-2xl space-y-2 shadow-sm flex flex-col gap-2">
             <Image
-                className="w-full block aspect-video rounded-lg"
+                className="w-full block aspect-video rounded-lg flex-1"
                 width={320}
                 height={240}
                 src={featured_image_url}
