@@ -23,7 +23,7 @@ export default function Tabs({ data }) {
             </div>
             <div className="bg-white/60 p-4 shadow-sm rounded-b-xl rounded-tr-xl">
                 {activeTab.component || (
-                    <div className="text-center text-blue-400 min-h-20 flex justify-center items-center">
+                    <div className="text-center text-zinc-400 min-h-20 flex justify-center items-center">
                         There&apos;s nothing here.
                     </div>
                 )}
