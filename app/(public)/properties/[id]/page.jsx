@@ -1,5 +1,6 @@
 import getProperty from "@/app/_actions/getProperty";
 import Property from "./_component/Property";
+import OtherProperties from "./_component/OtherProperties";
 
 export const generateMetadata = async ({ params }) => {
     const { id } = await params;
@@ -25,8 +26,9 @@ export default async function SingleProperty({ params }) {
     const { id } = await params;
     const { data, success } = await getProperty(id);
     return (
-        <main>
+        <main className="flex flex-col lg:flex-row justify-center max-w-screen-lg mx-auto">
             <Property data={data} success={success} />
+            <OtherProperties id={id} />
         </main>
     );
 }

@@ -27,9 +27,9 @@ export default async function SingleBlogPage({ params }) {
     const { success, data } = await getBlogPost(slug);
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-y-6 max-w-screen-2xl mx-auto">
+        <main className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-y-6 max-w-screen-2xl mx-auto">
             <BlogBody success={success} data={data} />
             <OtherBlogPosts slug={slug} />
-        </div>
+        </main>
     );
 }
