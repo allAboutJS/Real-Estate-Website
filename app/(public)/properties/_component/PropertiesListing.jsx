@@ -1,7 +1,9 @@
 import getPropertiesMetadata from "@/app/_actions/getPropertiesMetadata";
 import PropertyCard from "../../_components/PropertyCard";
+import { unstable_noStore } from "next/cache";
 
 export default async function PropertiesListing() {
+    unstable_noStore();
     const { success, data } = await getPropertiesMetadata(undefined, true);
 
     return (
