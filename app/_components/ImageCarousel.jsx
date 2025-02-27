@@ -7,23 +7,34 @@ import { BiCaretLeft, BiCaretRight } from "react-icons/bi";
 export default function ImageCarousel({ assets }) {
     const [currentSlide, setCurrentSlide] = useState(1);
     const carouselRef = useRef(null);
+    const timeoutRef = useRef(null); // For debouncing
 
     useEffect(() => {
         const width = carouselRef.current?.clientWidth;
-
-        carouselRef.current?.scroll({ left: width * (currentSlide - 1) });
+        if (width) {
+            carouselRef.current?.scrollTo({ left: width * (currentSlide - 1), behavior: "smooth" });
+        }
     }, [currentSlide]);
 
     useEffect(() => {
-        const updateSlideOnScroll = (e) => {
-            const { scrollLeft } = e.target;
-            const width = carouselRef.current?.clientWidth;
+        const updateSlideOnScroll = () => {
+            if (!carouselRef.current) return;
+            const { scrollLeft, clientWidth } = carouselRef.current;
 
-            setCurrentSlide(Math.ceil(scrollLeft / width) + 1);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+            timeoutRef.current = setTimeout(() => {
+                setCurrentSlide(Math.round(scrollLeft / clientWidth) + 1);
+            }, 100);
         };
 
-        carouselRef.current?.addEventListener("scrollend", updateSlideOnScroll);
-        return () => carouselRef.current?.removeEventListener("scrollend", updateSlideOnScroll);
+        const carousel = carouselRef.current;
+        carousel?.addEventListener("scroll", updateSlideOnScroll);
+
+        return () => {
+            carousel?.removeEventListener("scroll", updateSlideOnScroll);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
     }, []);
 
     return (
