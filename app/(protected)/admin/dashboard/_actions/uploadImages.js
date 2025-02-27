@@ -11,7 +11,8 @@ const uploadImages = async (...args) => {
     try {
         const imagesUrl = await Promise.all(
             imagesBinaries.map(async (imageBinary) => {
-                const fileUrl = `./${Math.random()}.webp`;
+                const fileUrl =
+                    process.env.NODE_ENV === "production" ? `/tmp/${Math.random()}.webp` : `./${Math.random()}.webp`;
 
                 await writeFile(fileUrl, imageBinary);
 
