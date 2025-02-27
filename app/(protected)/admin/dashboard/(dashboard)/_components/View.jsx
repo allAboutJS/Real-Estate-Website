@@ -141,7 +141,7 @@ export default function View(props) {
                                 </p>
                                 <p>
                                     <FaNairaSign className="text-green-600 inline" /> <b>Price:</b>{" "}
-                                    {props.price.toLocaleString()}
+                                    {Number(props.price).toLocaleString()}
                                 </p>
                                 <p className="capitalize">
                                     <FaQuestion className="text-yellow-600 inline" /> <b>For:</b>{" "}
