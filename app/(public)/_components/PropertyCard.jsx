@@ -28,7 +28,7 @@ export default function PropertyCard({
                         <FaLocationPin className="text-blue-600 inline" /> Address: <b>{address}</b>
                     </p>
                     <p>
-                        <FaNairaSign className="text-green-600 inline" /> Price: <b>{price.toLocaleString()}</b>
+                        <FaNairaSign className="text-green-600 inline" /> Price: <b>{Number(price).toLocaleString()}</b>
                     </p>
                     <p className="capitalize">
                         <FaQuestion className="text-yellow-600 inline" /> For: <b>{availability_status}</b>
