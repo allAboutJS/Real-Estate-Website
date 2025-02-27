@@ -5,9 +5,123 @@ import { CgEditBlackPoint, CgEye } from "react-icons/cg";
 import Modal from "../../_components/Modal";
 import { FaLocationPin, FaNairaSign, FaQuestion, FaWhatsapp } from "react-icons/fa6";
 import ImageCarousel from "@/app/_components/ImageCarousel";
+import { toast } from "sonner";
+import ToastOptions from "../../blog/[slug]/_components/ToastOptions";
+import togglePropertyArchivedState from "../_actions/togglePropertyArchivedState";
+import { useRouter } from "next/navigation";
+import deleteProperty from "../_actions/deleteProperty";
 
 export default function View(props) {
     const [showProperty, setShowProperty] = useState(false);
+    const router = useRouter();
+    const handleAction = (action) => {
+        let toastId;
+
+        if (action === "archive") {
+            toastId = toast.warning("Are you sure you want to archive this property?", {
+                action: (
+                    <ToastOptions
+                        toastId={toastId}
+                        onAccept={() =>
+                            toast.promise(
+                                () =>
+                                    new Promise(async (resolve, reject) => {
+                                        try {
+                                            toast.dismiss(toastId);
+
+                                            const { success } = await togglePropertyArchivedState(props.id);
+
+                                            if (!success) reject();
+                                            else {
+                                                resolve();
+                                                router.refresh();
+                                            }
+                                        } catch (error) {
+                                            console.log(error);
+                                            reject();
+                                        }
+                                    }),
+                                {
+                                    loading: "Archiving property...",
+                                    success: "Property archived successfully!",
+                                    error: "Failed to archive property!"
+                                }
+                            )
+                        }
+                    />
+                )
+            });
+        } else if (action === "unarchive") {
+            toastId = toast.warning("Are you sure you want to remove this property from the archive?", {
+                action: (
+                    <ToastOptions
+                        toastId={toastId}
+                        onAccept={() =>
+                            toast.promise(
+                                () =>
+                                    new Promise(async (resolve, reject) => {
+                                        try {
+                                            toast.dismiss(toastId);
+
+                                            const { success } = await togglePropertyArchivedState(props.id, false);
+
+                                            if (!success) reject();
+                                            else {
+                                                resolve();
+                                                router.refresh();
+                                            }
+                                        } catch (error) {
+                                            console.log(error);
+                                            reject();
+                                        }
+                                    }),
+                                {
+                                    loading: "Removing property from archive...",
+                                    success: "Property removed from archive successfully!",
+                                    error: "Failed to remove from archive!"
+                                }
+                            )
+                        }
+                    />
+                )
+            });
+        } else if (action === "delete") {
+            toastId = toast.warning("Are you sure you want to delete this property?", {
+                action: (
+                    <ToastOptions
+                        toastId={toastId}
+                        onAccept={() =>
+                            toast.promise(
+                                () =>
+                                    new Promise(async (resolve, reject) => {
+                                        try {
+                                            toast.dismiss(toastId);
+
+                                            const { success } = await deleteProperty(props.id);
+
+                                            if (!success) reject();
+                                            else {
+                                                resolve();
+                                                router.refresh();
+                                            }
+                                        } catch (error) {
+                                            console.log(error);
+                                            reject();
+                                        }
+                                    }),
+                                {
+                                    loading: "Deleting property...",
+                                    success: "Property deleted successfully!",
+                                    error: "Failed to delete property!"
+                                }
+                            )
+                        }
+                    />
+                )
+            });
+        }
+    };
+
     return (
         <>
             <button
@@ -45,15 +159,24 @@ export default function View(props) {
                             </div>
                             <div className="flex gap-2">
                                 {props.archived ? (
-                                    <button className="px-4 p-2 rounded-lg flex-1 text-center bg-green-600 text-white">
+                                    <button
+                                        onClick={() => handleAction("unarchive")}
+                                        className="px-4 p-2 rounded-lg flex-1 text-center bg-green-600 text-white"
+                                    >
                                         UNARCHIVE
                                     </button>
                                 ) : (
-                                    <button className="px-4 p-2 rounded-lg flex-1 text-center bg-yellow-600 text-white">
+                                    <button
+                                        onClick={() => handleAction("archive")}
+                                        className="px-4 p-2 rounded-lg flex-1 text-center bg-yellow-600 text-white"
+                                    >
                                         ARCHIVE
                                     </button>
                                 )}
-                                <button className="px-4 p-2 rounded-lg flex-1 text-center bg-red-600 text-white">
+                                <button
+                                    onClick={() => handleAction("delete")}
+                                    className="px-4 p-2 rounded-lg flex-1 text-center bg-red-600 text-white"
+                                >
                                     DELETE
                                 </button>
                             </div>
