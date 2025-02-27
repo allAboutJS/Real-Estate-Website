@@ -20,7 +20,7 @@ export default function OurTeam() {
                     </div>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                    <Image height={200} width={200} className="rounded-full" src="/images/secretary.jpg" />
+                    <Image height={200} width={200} className="rounded-full" src="/images/secretary-1.jpg" />
                     <div className="text-center">
                         <h3 className="text-lg font-semibold">Mrs. Joy Ifeoma Ani</h3>
                         <p>Secretary</p>
