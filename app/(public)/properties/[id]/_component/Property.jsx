@@ -18,7 +18,8 @@ export default function Property({ success, data }) {
                         <FaLocationPin className="text-blue-600 inline" /> <b>Address:</b> {data.address}
                     </p>
                     <p>
-                        <FaNairaSign className="text-green-600 inline" /> <b>Price:</b> {data.price.toLocaleString()}
+                        <FaNairaSign className="text-green-600 inline" /> <b>Price:</b>{" "}
+                        {Number(data.price).toLocaleString()}
                     </p>
                     <p className="capitalize">
                         <FaQuestion className="text-yellow-600 inline" /> <b>For:</b> {data.availability_status}
