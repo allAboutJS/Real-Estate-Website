@@ -1,5 +1,6 @@
 import getBlogPost from "@/app/_actions/getBlogPost";
 import BlogBody from "./_components/BlogBody";
+import OtherBlogPosts from "./_components/OtherBlogPosts";
 
 export const generateMetadata = async ({ params }) => {
     const { slug } = await params;
@@ -25,5 +26,10 @@ export default async function SingleBlogPage({ params }) {
     const { slug } = params;
     const { success, data } = await getBlogPost(slug);
 
-    return <BlogBody success={success} data={data} />;
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-y-6 max-w-screen-2xl mx-auto">
+            <BlogBody success={success} data={data} />
+            <OtherBlogPosts slug={slug} />
+        </div>
+    );
 }
