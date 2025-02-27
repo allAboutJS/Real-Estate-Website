@@ -18,7 +18,7 @@ export default function Login() {
         <main className="flex justify-center items-center min-h-screen bg-blue-50 p-4">
             <div className="max-w-xl w-full p-4 bg-white shadow-md space-y-6 rounded-2xl">
                 <div>
-                    <Image src="/images/logo.jpg" height={80} width={80} alt="" className="block mx-auto" />
+                    <Image src="/images/logo.png" height={80} width={80} alt="" className="block mx-auto" />
                 </div>
                 <div className="text-center">
                     <h1 className="text-xl font-semibold">Admin Sign In</h1>
