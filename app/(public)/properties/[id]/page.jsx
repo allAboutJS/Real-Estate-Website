@@ -26,7 +26,7 @@ export default async function SingleProperty({ params }) {
     const { id } = await params;
     const { data, success } = await getProperty(id);
     return (
-        <main className="flex flex-col lg:flex-row justify-center max-w-screen-lg mx-auto">
+        <main className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] justify-center max-w-screen-lg mx-auto">
             <Property data={data} success={success} />
             <OtherProperties id={id} />
         </main>

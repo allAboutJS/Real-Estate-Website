@@ -10,7 +10,7 @@ export default function Property({ success, data }) {
 
     if (!success) return router.replace("/properties"), null;
     return (
-        <div className="max-w-screen-md mx-auto bg-white p-6 space-y-6 h-fit lg:sticky top-20">
+        <div className="w-full max-w-screen-md mx-auto bg-white p-6 space-y-6 h-fit lg:sticky top-20">
             <ImageCarousel assets={data.assets} />
             <div className="text-zinc-800 space-y-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-end">
