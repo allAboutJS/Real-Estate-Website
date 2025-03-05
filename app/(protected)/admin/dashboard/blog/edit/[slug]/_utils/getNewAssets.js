@@ -1,5 +1,5 @@
-import deleteAssets from "@/app/(protected)/admin/dashboard/blog/_utils/uploadImagesToDb";
 import uploadImagesToImageDb from "@/app/(protected)/admin/dashboard/blog/_utils/uploadImagesToDb";
+import deleteAssets from "@/app/(protected)/admin/dashboard/_actions/deleteAssets";
 
 const getNewAssets = async (assets, quillEditorRef) => {
     const newAssets = await uploadImagesToImageDb(quillEditorRef);

@@ -43,10 +43,10 @@ export default function Editor(props) {
                                 if (success) {
                                     resolve(success);
                                     router.replace(
-                                        `/admin/dashboard/blog/edit/${blogInfo.slug}${table ? `?table=${table}` : ""}`
+                                        `/admin/dashboard/blog/edit/${blogInfo.slug}`
                                     );
                                 } else reject("Request failed!");
-                            } catch {
+                            } catch (e) {
                                 reject("Request failed!");
                             }
                         }),
@@ -68,7 +68,7 @@ export default function Editor(props) {
         return () => {
             updateButtonRef.current?.removeEventListener("click", _updateBlogPost);
         };
-    }, [router, quillEditorRef, props]);
+    }, [router, quillEditorRef]);
 
     return (
         <>
