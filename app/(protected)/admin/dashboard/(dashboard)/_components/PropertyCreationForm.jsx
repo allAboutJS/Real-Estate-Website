@@ -14,11 +14,12 @@ import deleteAssets from "../../_actions/deleteAssets";
 export default function PropertyCreationForm({ defaultValues, isEditting }) {
   const router = useRouter();
   const [images, setImages] = useState(defaultValues?.assets?.map((asset) => asset.url) || []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
     setValue,
-    formState: { errors, isSubmitting }
+    formState: { errors }
   } = useForm({ mode: "all" });
 
   useEffect(() => {
@@ -52,6 +53,7 @@ export default function PropertyCreationForm({ defaultValues, isEditting }) {
     toast.promise(
       () =>
         new Promise(async (resolve, reject) => {
+          setIsSubmitting(true);
           try {
             const imagesTextArr = await Promise.all(
               Array.from(form.images).map(async (file) => {
@@ -74,6 +76,8 @@ export default function PropertyCreationForm({ defaultValues, isEditting }) {
             } else reject();
           } catch {
             reject();
+          } finally {
+            setIsSubmitting(false);
           }
         }),
       {
