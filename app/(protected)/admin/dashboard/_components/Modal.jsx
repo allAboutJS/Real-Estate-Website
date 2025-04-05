@@ -9,7 +9,7 @@ export default function Modal({ children, onDismiss, heading, dismissOnOutsideCl
         onClick={dismissOnOutsideClick ? onDismiss : undefined}
         className="inset-0 top-0 fixed bg-black bg-opacity-10 backdrop-blur-sm z-50"
       ></div>
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg z-50 w-[90%] max-w-screen-sm h-fit max-h-[90%] overflow-y-auto .show-scrollbar rounded-2xl">
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg z-50 w-[90%] max-w-screen-sm h-fit max-h-[90%] overflow-y-auto show-scrollbar rounded-2xl">
         <div className="relative z-50">
           <div className="flex bg-white justify-end items-center border-b p-4 sticky top-0 w-full left-0 z-50">
             {heading && <div className="text-xl font-semibold capitalize text-center flex-1">{heading}</div>}
