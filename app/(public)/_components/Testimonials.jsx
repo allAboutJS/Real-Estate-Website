@@ -66,7 +66,7 @@ export default function Testimonials() {
             </p>
             <div
                 ref={testimonialsContainer}
-                className="max-w-screen-md m-auto flex overflow-auto mt-8 snap-x snap-mandatory"
+                className="max-w-screen-md m-auto flex overflow-auto mt-8 snap-x snap-mandatory no-scrollbar"
             >
                 {testimonials.map((testimony) => (
                     <blockquote
