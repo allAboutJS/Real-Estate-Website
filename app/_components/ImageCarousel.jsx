@@ -39,7 +39,7 @@ export default function ImageCarousel({ assets }) {
 
     return (
         <div className="overflow-hidden relative z-0">
-            <div ref={carouselRef} className="snap-x snap-mandatory max-w-full overflow-auto flex h-max items-center">
+            <div ref={carouselRef} className="snap-x snap-mandatory max-w-full overflow-auto flex h-max items-center no-scrollbar">
                 {assets?.map((asset) => (
                     <div key={asset.url} className="snap-always snap-end flex-1 min-w-full h-fit">
                         <Image width={800} height={600} src={asset.url} alt="" className="w-full h-auto rounded-lg" />
